@@ -20,49 +20,12 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="bg-dark">
-        <div class="p-1 text-white text-center" style="background-color: rgba(0, 0, 0, 0.2);">
-            <div class="row justify-content-center">
-                <div class="col-md-30 p-3">
-                    <h1>Programme annuel des étudiants</h1>
-                </div>
-                <div class="col-md-30 p-3">
-                    <img th:src="@{/img/logo-esi.png}" width=80px>
-                </div>
-            </div>
-            <h6>HE2B-ESI / WEBG6</h6>
-        </div>
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-home"></i>
-            </a>
-            <!-- Links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/course">Cours</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/student">Etudiants</a>
-                </li>
-            </ul>
-            <!-- Links -->
-        </nav>
-        <!-- Navbar -->
-    </header>
+    <header th:replace="fragments/header.html :: header"/>
 
-    <main layout:fragment="content"></main>
+    <main layout:fragment="content"/>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-center text-white mt-auto">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright: Lahyaoui Ayoub - 54895
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
+    <footer th:replace="fragments/footer.html :: footer"/>
 
 </body>
 
