@@ -4,40 +4,27 @@
 
 <head>
     <title>Tableau de bord</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <!-- Font Awesome-->
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap -->
 </head>
 
-<main layout:fragment="content">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-30">
-                <div class="card">
-                    <div class="card-header"></div>
+<body>
+    <main layout:fragment="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card col-md-30">
+                    <div class="card-header">
+                        <h1>Bienvenue sur le site de gestion de PAE de l'ESI</h1>
+                    </div>
                     <div class="card-body">
                         <div display="inline">
-                            <h1>Bienvenue sur le site d'inscription de l'ESI</h1> <img th:src="@{/img/logo-esi.png}"
-                                width=200px>
+                            <img th:src="@{/img/logo-esi.png}" width=200px>
                         </div>
-                        <br>
                         <br>
                         <h2> École Supérieure d'Informatique </h2>
                         <h4>HE2B - ESI</h4>
                         <p>
                             <br>
-                            L'ESI délivre le grade de BA (Bachelier/Bachelor) en Informatique. La durée des études est de
+                            L'ESI délivre le grade de BA (Bachelier/Bachelor) en Informatique. La durée des études est
+                            de
                             trois ans, et il y a trois sections:
                             <br>
                             Informatique de gestion
@@ -56,14 +43,11 @@
                             1000 Bruxelles
                         </p>
                     </div>
-                    <div class="card-body">
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-
+    </main>
+</body>
 
 
 </html>
