@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/main}">
 
 <head>
     <title>Tableau de bord</title>
@@ -19,33 +20,7 @@
     <!-- Bootstrap -->
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    <header class="bg-dark">
-        <div class="container-fluid p-1 text-white text-center" style="background-color: rgba(0, 0, 0, 0.2);">
-            <h1>Programme annuel des étudiants</h1>
-            <h6>HE2B-ESI / WEBG6</h6>
-        </div>
-
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-home"></i>
-            </a>
-            <!-- Links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/course">Cours</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/student">Etudiants</a>
-                </li>
-            </ul>
-            <!-- Links -->
-        </nav>
-        <!-- Navbar -->
-    </header>
-
-    <main>
+    <main layout:fragment="content">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -59,17 +34,5 @@
             </div>
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-center text-white mt-auto">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright: Lahyaoui Ayoub - 54895
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-
-</body>
 
 </html>

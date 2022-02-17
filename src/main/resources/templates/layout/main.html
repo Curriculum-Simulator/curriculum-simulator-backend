@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <title>Tableau de bord</title>
@@ -45,8 +45,7 @@
         <!-- Navbar -->
     </header>
 
-    <main>
-    </main>
+    <main layout:fragment="content"></main>
 
     <!-- Footer -->
     <footer class="bg-dark text-center text-white mt-auto">
