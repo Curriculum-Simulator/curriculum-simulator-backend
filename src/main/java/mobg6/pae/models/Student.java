@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Student {
     @Id
+    private String id;
     private String name;
     private Gender gender;
     private Section section;

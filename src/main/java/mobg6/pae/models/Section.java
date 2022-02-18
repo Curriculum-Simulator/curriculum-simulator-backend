@@ -1,5 +1,5 @@
-package mobg6.pae.model;
+package mobg6.pae.models;
 
 public enum Section {
-    GESTION, INDUSTRIELLE, RESEAU
+    COMMUN, INDUSTRIELLE_RESEAU, GESTION, INDUSTRIELLE, RESEAU, 
 }
