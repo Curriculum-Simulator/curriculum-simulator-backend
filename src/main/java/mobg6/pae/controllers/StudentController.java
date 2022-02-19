@@ -1,4 +1,4 @@
-package mobg6.pae.web;
+package mobg6.pae.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
