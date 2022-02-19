@@ -19,5 +19,5 @@ public class Student {
     private String fname;
     private Gender gender;
     private Section section;
-    private List<Course> courses;
+    //private List<Course> courses;
 }

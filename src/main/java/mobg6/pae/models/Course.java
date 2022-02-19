@@ -19,6 +19,6 @@ public class Course {
     private int credits;
     private Section section;
     private int hours;
-    private List<Student> students;
+    //private List<Student> students;
 
 }
