@@ -21,8 +21,6 @@ import mobg6.pae.models.Section;
 @RequiredArgsConstructor
 public class CourseSeeder implements CommandLineRunner {
 
-    private static final String COMMA_DELIMITER = ",";
-
     @Autowired
     private final CourseRepository courseRepository;
 
