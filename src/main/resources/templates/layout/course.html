@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/main}">
+
+<head>
+    <title>Cours</title>
+</head>
+
+<body>
+    <main layout:fragment="content">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card">
+
+                    <div class="card-header" layout:fragment="card-header"></div>
+
+                    <div class="card-body" layout:fragment="card-body"></div>
+
+                    <div class="card-footer">
+                        esi@he2b.be
+                        <br>
+                        +32 (0)2 219 15 46
+                        <br>
+                        Rue Royale 67
+                        1000 Bruxelles
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+</html>

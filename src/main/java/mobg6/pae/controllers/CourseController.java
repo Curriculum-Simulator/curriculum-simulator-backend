@@ -25,7 +25,7 @@ public class CourseController {
     public String getAllCourses(Model model) {
         var courses = courseRepository.findAll();
         model.addAttribute("courses", courses);
-        return "course";
+        return "course_result";
     }
 
     @GetMapping("/course/gestion")
@@ -36,7 +36,7 @@ public class CourseController {
         //Add attributes to model
         model.addAttribute("courses", courses);
         model.addAttribute("section", Section.GESTION);
-        return "course";
+        return "course_result";
     }
 
     @GetMapping("/course/reseau")
@@ -48,7 +48,7 @@ public class CourseController {
         //Add attributes to model
         model.addAttribute("courses", courses);
         model.addAttribute("section", Section.RESEAU);
-        return "course";
+        return "course_result";
     }
 
     @GetMapping("/course/industrielle")
@@ -60,7 +60,7 @@ public class CourseController {
         //Add attributes to model
         model.addAttribute("courses", courses);
         model.addAttribute("section", Section.INDUSTRIELLE);
-        return "course";
+        return "course_result";
     }
     
 }
