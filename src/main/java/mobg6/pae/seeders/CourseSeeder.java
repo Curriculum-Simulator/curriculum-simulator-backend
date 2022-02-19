@@ -1,13 +1,10 @@
 package mobg6.pae.seeders;
 
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 import org.springframework.context.event.EventListener;
 
@@ -33,7 +30,6 @@ public class CourseSeeder {
 
     private void seedSection(Section section) throws FileNotFoundException, IOException {
 
-        List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("book.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
