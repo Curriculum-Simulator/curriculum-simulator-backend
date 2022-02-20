@@ -13,54 +13,8 @@ import mobg6.pae.models.Section;
 @RequiredArgsConstructor
 public class CourseController {
 
-    @Autowired 
-    private final CourseRepository courseRepository;
-
     @GetMapping("/course")
     public String index() {
         return "course";
     }
-
-    @GetMapping("/course/all")
-    public String getAllCourses(Model model) {
-        var courses = courseRepository.findAll();
-        model.addAttribute("courses", courses);
-        return "course_result";
-    }
-
-    @GetMapping("/course/gestion")
-    public String getGestionCourses(Model model) {
-        var courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.GESTION));
-
-        //Add attributes to model
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.GESTION);
-        return "course_result";
-    }
-
-    @GetMapping("/course/reseau")
-    public String getReseauCourses(Model model) {
-        var courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.RESEAU));
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
-
-        //Add attributes to model
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.RESEAU);
-        return "course_result";
-    }
-
-    @GetMapping("/course/industrielle")
-    public String getIndustrielleCourses(Model model) {
-        var courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE));
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
-        
-        //Add attributes to model
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.INDUSTRIELLE);
-        return "course_result";
-    }
-    
 }
