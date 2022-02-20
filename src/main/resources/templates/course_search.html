@@ -1,7 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/course}">
+
 <body>
-    
+    <div class="card-header" layout:fragment="card-header">
+        <h1>Recherche de cours</h1>
+
+        <!-- Form for Courses-->
+        <form th:action="@{/course}" th:object="${course}" method="post">
+            Id: <input type="text" th:field="*{id}" />
+            <input type="submit" value="Search" />
+        </form>
+        <!-- End of Form for Courses-->
+    </div>
+
+    <div class="card-body" layout:fragment="card-body">
+
+        <h4>Liste des résultats</h4>
+
+        <div th:if="${not #lists.isEmpty(courses)}">
+            <table th:replace="fragments/course_list.html :: course_table"></table>
+        </div>
+
+        <div th:unless="${not #lists.isEmpty(courses)}">
+            <span>Aucun résultat trouvé</span>
+        </div>
+
+    </div>
 </body>
+
 </html>
