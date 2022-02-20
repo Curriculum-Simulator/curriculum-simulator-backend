@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout/course}">
+
 <body>
     <div class="card-header" layout:fragment="card-header">
         <h1>
-            <span>Liste des cours</span>
-            <span th:switch="${section.name}">
-                <td th:case="GESTION">de Gestion</td>
-                <td th:case="INDUSTRIELLE">d'Industrielle</td>
-                <td th:case="RESEAU">de Réseau</td>
-            </span>
+
+            <div th:if="${section != null && section.name != null}">
+                <span>Liste des cours</span>
+                <span th:switch="${section.name}">
+                    <td th:case="GESTION">de Gestion</td>
+                    <td th:case="INDUSTRIELLE">d'Industrielle</td>
+                    <td th:case="RESEAU">de Réseau</td>
+                </span>
+            </div>
+
+            <div th:unless="${section != null && section.name != null}">
+                <span>Liste de résultats</span>
+            </div>
         </h1>
     </div>
 
     <div class="card-body" layout:fragment="card-body">
-        <!-- List of Courses-->
-        <table>
-            <tr>
-                <th>Sigle</th>
-                <th>Titre</th>
-                <th>Ects</th>
-            </tr>
-            <tr th:each="course: ${courses}">
-                <td th:text="${course.id}">id</td>
-                <td th:text="${course.title}">title</td>
-                <td th:text="${course.credits}">credits</td>
-            </tr>
-        </table>
-        <!-- End of List of Courses-->
+        <table th:replace="fragments/course_list.html :: course_table"></table>
     </div>
 </body>
+
 </html>
