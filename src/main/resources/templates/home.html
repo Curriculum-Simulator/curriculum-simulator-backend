@@ -11,9 +11,11 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="card">
+
                     <div class="card-header">
                         <h1>Bienvenue sur le site de gestion de PAE de l'ESI</h1>
                     </div>
+
                     <div class="card-body">
                         <div display="inline">
                             <img th:src="@{/img/logo-esi.png}" width=200px>
@@ -38,14 +40,9 @@
                             <br>
                         </p>
                     </div>
-                    <div class="card-footer">
-                            esi@he2b.be
-                            <br>
-                            +32 (0)2 219 15 46
-                            <br>
-                            Rue Royale 67
-                            1000 Bruxelles
-                    </div>
+
+                    <div class="card-footer" th:replace="fragments/esi_contact.html :: contact"></div>
+
                 </div>
             </div>
         </div>

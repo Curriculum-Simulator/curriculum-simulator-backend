@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- List of Students-->
+    <table th:fragment="student_table">
+        <tr>
+            <th>Matricule</th>
+            <th>Name</th>
+            <th>Firstname</th>
+        </tr>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.id}">id</td>
+            <td th:text="${student.name}">name</td>
+            <td th:text="${student.fname}">firstname</td>
+        </tr>
+    </table>
+    <!-- End of List of Students-->
+</body>
+
+</html>
