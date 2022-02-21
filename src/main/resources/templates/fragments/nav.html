@@ -5,8 +5,16 @@
 
     <!-- User navbar-->
     <ul class="navbar-nav" th:fragment="nav-default">
-        <li class="nav-item">
-            <a class="nav-link" href="/course">Cours</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Cours</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/course">Search</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/course/gestion">Gestion</a>
+                <a class="dropdown-item" href="/course/reseau">Reseau</a>
+                <a class="dropdown-item" href="/course/industrielle">Industrielle</a>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/student">Etudiants</a>
