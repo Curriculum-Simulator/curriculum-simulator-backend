@@ -8,18 +8,18 @@
 
         <!-- Course nav dropdown -->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/course" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="courseDropdownMenuLink"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                 Cours 
-                <span class="caret"></span>
             </a>
-            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/course">Search</a>
+
+            <ul class="dropdown-menu fade-up" aria-labelledby="courseDropdownMenuLink" role="menu">
+                <li><a class="dropdown-item" href="/course">Search</a></li>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/course/gestion">Gestion</a>
-                <a class="dropdown-item" href="/course/reseau">Reseau</a>
-                <a class="dropdown-item" href="/course/industrielle">Industrielle</a>
-            </div>
+                <li><a class="dropdown-item" href="/course/gestion">Gestion</a></li>
+                <li><a class="dropdown-item" href="/course/reseau">Reseau</a></li>
+                <li><a class="dropdown-item" href="/course/industrielle">Industrielle</a></li>
+            </ul>
         </li>
         <!-- End of Course nav dropdown -->
 
@@ -28,7 +28,7 @@
             <a class="nav-link" href="/student">Etudiants</a>
         </li>
         <!-- End Student nav item -->
-        
+
     </ul>
     <!-- End of User navbar-->
 

@@ -17,12 +17,24 @@
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-home"></i>
-            </a>
-            <!-- Links -->
-            <ul th:replace="fragments/nav.html :: navbar-user" />
-            <!-- Links -->
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="/">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Links -->
+                    <ul th:replace="fragments/nav.html :: navbar-user"></ul>
+                    <!-- Links -->
+                </div>
+                
+            </div>
         </nav>
         <!-- Navbar -->
     </header>
