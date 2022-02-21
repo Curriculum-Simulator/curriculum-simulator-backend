@@ -4,7 +4,9 @@
 <body>
 
     <!-- User navbar-->
-    <ul class="navbar-nav" th:fragment="nav-default">
+    <ul class="navbar-nav" th:fragment="navbar-user">
+
+        <!-- Course nav dropdown -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/course" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -19,14 +21,19 @@
                 <a class="dropdown-item" href="/course/industrielle">Industrielle</a>
             </div>
         </li>
+        <!-- End of Course nav dropdown -->
+
+        <!-- Student nav item -->
         <li class="nav-item">
             <a class="nav-link" href="/student">Etudiants</a>
         </li>
+        <!-- End Student nav item -->
+        
     </ul>
     <!-- End of User navbar-->
 
     <!-- Admin navbar-->
-    <ul class="navbar-nav" th:fragment="nav-admin">
+    <ul class="navbar-nav" th:fragment="navbar-admin">
         <li class="nav-item">
             <a class="nav-link" href="/admin/course">Cours</a>
         </li>
