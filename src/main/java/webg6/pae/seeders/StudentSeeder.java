@@ -1,14 +1,14 @@
-package mobg6.pae.seeders;
+package webg6.pae.seeders;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import mobg6.pae.dao.StudentRepository;
-import mobg6.pae.models.Gender;
-import mobg6.pae.models.Section;
-import mobg6.pae.models.Student;
+import webg6.pae.dao.StudentRepository;
+import webg6.pae.models.Gender;
+import webg6.pae.models.Section;
+import webg6.pae.models.Student;
 
 @Component
 @RequiredArgsConstructor

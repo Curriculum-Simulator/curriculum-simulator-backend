@@ -1,4 +1,4 @@
-package mobg6.pae;
+package webg6.pae;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

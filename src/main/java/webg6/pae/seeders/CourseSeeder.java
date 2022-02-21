@@ -1,4 +1,4 @@
-package mobg6.pae.seeders;
+package webg6.pae.seeders;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
-import mobg6.pae.dao.CourseRepository;
-import mobg6.pae.models.Course;
-import mobg6.pae.models.Section;
+import webg6.pae.dao.CourseRepository;
+import webg6.pae.models.Course;
+import webg6.pae.models.Section;
 
 @Component
 @RequiredArgsConstructor

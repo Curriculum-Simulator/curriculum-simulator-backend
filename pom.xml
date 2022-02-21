@@ -7,7 +7,7 @@
 		<version>2.6.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>mobg6</groupId>
+	<groupId>webg6</groupId>
 	<artifactId>pae</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pae</name>

@@ -1,4 +1,4 @@
-package mobg6.pae.models;
+package webg6.pae.models;
 
 import java.util.List;
 import javax.persistence.Entity;

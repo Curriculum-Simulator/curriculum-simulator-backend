@@ -1,4 +1,4 @@
-package mobg6.pae.controllers;
+package webg6.pae.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
-import mobg6.pae.dao.CourseRepository;
-import mobg6.pae.models.Course;
-import mobg6.pae.models.Section;
+import webg6.pae.dao.CourseRepository;
+import webg6.pae.models.Course;
+import webg6.pae.models.Section;
 
 @Controller
 @RequiredArgsConstructor
