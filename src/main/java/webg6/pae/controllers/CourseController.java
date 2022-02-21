@@ -32,9 +32,7 @@ public class CourseController {
     @PostMapping("/course")
     public String search(Model model, Course course) {
         try {
-            var foundCourse = courseRepository.findById(course.getId().toUpperCase()).orElseThrow();
-            List<Course> courses = new ArrayList<>();
-            courses.add(foundCourse);
+            List<Course> courses = courseRepository.findByIdContaining(course.getId().toUpperCase());
             model.addAttribute("courses", courses);
         } catch (NoSuchElementException e) {}
         return "course_search";
