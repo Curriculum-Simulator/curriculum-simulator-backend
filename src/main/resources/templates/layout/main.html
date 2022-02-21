@@ -24,11 +24,11 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-    <header th:replace="fragments/header.html :: header"/>
+    <header th:replace="fragments/header.html :: header"></header>
 
-    <main layout:fragment="content"></main>
+    <main class="my-auto" layout:fragment="content"></main>
 
-    <footer th:replace="fragments/footer.html :: footer"/>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
 </body>
 

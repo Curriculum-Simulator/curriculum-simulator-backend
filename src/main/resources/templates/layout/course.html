@@ -9,15 +9,18 @@
 <body>
     <main layout:fragment="content">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="card">
+            <div class="row">
+                <div class="col">
 
-                    <div class="card-header" layout:fragment="card-header"></div>
+                    <div class="card">
 
-                    <div class="card-body" layout:fragment="card-body"></div>
+                        <div class="card-header" layout:fragment="card-header"></div>
 
-                    <div class="card-footer" th:replace="fragments/esi_contact.html :: contact"></div>
+                        <div class="card-body" layout:fragment="card-body"></div>
 
+                        <div class="card-footer" th:replace="fragments/esi_contact.html :: contact"></div>
+
+                    </div>
                 </div>
             </div>
         </div>

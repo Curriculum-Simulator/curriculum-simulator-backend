@@ -10,39 +10,43 @@
     <main layout:fragment="content">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="card">
+                <div class="col align-self-center">
+                    <div class="card">
 
-                    <div class="card-header">
-                        <h1>Bienvenue sur le site de gestion de PAE de l'ESI</h1>
-                    </div>
-
-                    <div class="card-body">
-                        <div display="inline">
-                            <img th:src="@{/img/logo-esi.png}" width=200px>
+                        <div class="card-header">
+                            <h1>Bienvenue sur le site de gestion de PAE de l'ESI</h1>
                         </div>
-                        <br>
-                        <h2> École Supérieure d'Informatique </h2>
-                        <h4>HE2B - ESI</h4>
-                        <p>
+
+                        <div class="card-body">
+                            <div display="inline">
+                                <img th:src="@{/img/logo-esi.png}" width=200px>
+                            </div>
                             <br>
-                            L'ESI délivre le grade de BA (Bachelier/Bachelor) en Informatique. La durée des études est
-                            de
-                            trois ans, et il y a trois sections:
-                            <br>
-                            Informatique de gestion
-                            Informatique et systèmes : finalité industrielle
-                            Informatique et systèmes : finalité réseaux et télécommunication
-                            Depuis septembre 2010, l'ESI organise une année de Spécialisation en sécurité des réseaux et
-                            systèmes informatiques.
-                            Depuis septembre 2016, l'ESI participe au Master en cybersécurité en co-diplômation avec
-                            différents partenaires.
-                            <br>
-                            <br>
-                        </p>
+                            <h2> École Supérieure d'Informatique </h2>
+                            <h4>HE2B - ESI</h4>
+                            <p>
+                                <br>
+                                L'ESI délivre le grade de BA (Bachelier/Bachelor) en Informatique. La durée des études
+                                est
+                                de
+                                trois ans, et il y a trois sections:
+                                <br>
+                                Informatique de gestion
+                                Informatique et systèmes : finalité industrielle
+                                Informatique et systèmes : finalité réseaux et télécommunication
+                                Depuis septembre 2010, l'ESI organise une année de Spécialisation en sécurité des
+                                réseaux et
+                                systèmes informatiques.
+                                Depuis septembre 2016, l'ESI participe au Master en cybersécurité en co-diplômation avec
+                                différents partenaires.
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+
+                        <div class="card-footer" th:replace="fragments/esi_contact.html :: contact"></div>
+        
                     </div>
-
-                    <div class="card-footer" th:replace="fragments/esi_contact.html :: contact"></div>
-
                 </div>
             </div>
         </div>
