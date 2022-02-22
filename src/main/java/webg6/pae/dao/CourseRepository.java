@@ -12,8 +12,10 @@ import webg6.pae.models.Section;
 @Repository
 public interface CourseRepository extends CrudRepository<Course, String> {
 
-    //@Query("SELECT c FROM Course c WHERE UPPER(c.id) like %:id%")
     List<Course> findByIdContaining(String id);
 
+    List<Course> findByTitleContaining(String title);
+
     List<Course> findBySection(Section section);
+
 }

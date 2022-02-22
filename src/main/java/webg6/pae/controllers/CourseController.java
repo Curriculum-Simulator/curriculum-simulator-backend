@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 import webg6.pae.dao.CourseRepository;
@@ -24,17 +25,24 @@ public class CourseController {
     private final CourseRepository courseRepository;
 
     @GetMapping("/course")
-    public String index(Model model) {
-        model.addAttribute("course", new Course());
-        return "course_search";
-    }
+    public String index(Model model, @RequestParam(required = false) String filter,
+            @RequestParam(required = false) String field) {
 
-    @PostMapping("/course")
-    public String search(Model model, Course course) {
-        try {
-            List<Course> courses = courseRepository.findByIdContaining(course.getId().toUpperCase());
+        if (filter != null && field != null) {
+            List<Course> courses;
+            switch (filter) {
+                case "id":
+                    courses = courseRepository.findByIdContaining(field.toUpperCase());
+                    break;
+                case "title":
+                    courses = courseRepository.findByTitleContaining(field);
+                    break;
+                default:
+                    courses = (List<Course>) courseRepository.findAll();
+            }
             model.addAttribute("courses", courses);
-        } catch (NoSuchElementException e) {}
+        }
+
         return "course_search";
     }
 
