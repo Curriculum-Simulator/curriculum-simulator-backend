@@ -8,15 +8,18 @@
 
         <!-- Form for Courses-->
 
-        <form class="d-flex" th:action="@{/course}" method="get">
-                <select class="form-select form-select-sm" aria-label="Default select" name="filter">
-                    <option value="id">Id</option>
-                    <option value="title">Title</option>
-                </select>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="field">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                <i class="fas fa-search"></i>
-            </button>
+        <form class="form-horizontal shadow" th:action="@{/course}" method="get">
+            <div class="input-group">
+                    <select id="filterType" class="form-select bg-light text-secondary" aria-label="Default select" name="filter">
+                        <option value="id">Id</option>
+                        <option value="title">Title</option>
+                    </select>
+                
+                <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="field">
+                <button class="btn btn-outline-success" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </form>
         <!-- End of Form for Courses-->
     </div>
