@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
+    
     @Id
     private String id;
-    
+
     @NotBlank
     private String title;
 
