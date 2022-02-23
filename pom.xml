@@ -7,8 +7,8 @@
 		<version>2.6.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>webg6</groupId>
-	<artifactId>pae</artifactId>
+	<groupId>alahyaoui</groupId>
+	<artifactId>curriculum</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pae</name>
 	<description>Pae project made in Spring Boot</description>
