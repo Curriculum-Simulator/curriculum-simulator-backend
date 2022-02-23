@@ -25,11 +25,9 @@ public class CourseController {
     private final CourseRepository courseRepository;
 
     @GetMapping("/course")
-    public String index(Model model, @RequestParam(required = false) String filter,
-            @RequestParam(required = false) String field) {
-
+    public String index(Model model, @RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
+        List<Course> courses;
         if (filter != null && field != null) {
-            List<Course> courses;
             switch (filter) {
                 case "id":
                     courses = courseRepository.findByIdContaining(field.toUpperCase());
@@ -40,8 +38,10 @@ public class CourseController {
                 default:
                     courses = (List<Course>) courseRepository.findAll();
             }
-            model.addAttribute("courses", courses);
+        }else{
+            courses = (List<Course>) courseRepository.findAll();
         }
+        model.addAttribute("courses", courses);
 
         return "course_search";
     }
