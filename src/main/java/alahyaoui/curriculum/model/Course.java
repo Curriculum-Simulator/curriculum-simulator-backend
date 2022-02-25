@@ -1,6 +1,5 @@
 package alahyaoui.curriculum.models;
 
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
@@ -31,6 +30,4 @@ public class Course {
 
     @Positive(message = "Hours must be positive")
     private int hours;
-    // private List<Student> students;
-
 }
