@@ -1,10 +1,11 @@
-package webg6.pae.models;
+package alahyaoui.curriculum.models;
 
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,16 +20,16 @@ public class Course {
     @Id
     private String id;
 
-    @NotBlank
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
-    @NotNull
+    @Positive(message = "Credits must be positive")
     private int credits;
 
-    @NotNull
+    @NotNull(message = "Section is mandatory")
     private Section section;
 
-    @NotNull
+    @Positive(message = "Hours must be positive")
     private int hours;
     // private List<Student> students;
 
