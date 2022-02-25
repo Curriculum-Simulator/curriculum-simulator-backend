@@ -13,7 +13,7 @@ public class Program {
         this.studentCourses = new HashMap<>();
     }
 
-    public Program(HashMap studentCourses) {
+    public Program(HashMap<String, ProgramCourseDto> studentCourses) {
         this.studentCourses = studentCourses;
     }
 
