@@ -1,7 +1,9 @@
-package webg6.pae.business;
+package alahyaoui.curriculum.business;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import lombok.Value;
 
@@ -9,13 +11,13 @@ import lombok.Value;
 public class CourseNode {
 
     private final String id;
-    private final List<CourseNode> prerequisites;
-    private final List<CourseNode> corequisites;
+    private final Set<CourseNode> prerequisites;
+    private final Set<CourseNode> corequisites;
 
     public CourseNode(String id){
         this.id = id;
-        prerequisites = new ArrayList<>();
-        corequisites = new ArrayList<>();
+        prerequisites = new HashSet<>();
+        corequisites = new HashSet<>();
     }
 
     public void addPrerequisite(CourseNode prerequisite){
