@@ -1,15 +1,15 @@
-package webg6.pae.business;
+package alahyaoui.curriculum.business;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class Graph {
+public class CourseGraph {
 
     private Set<CourseNode> nodes;// = new HashSet<>();
 
-    public Graph() {
+    public CourseGraph() {
         nodes = new HashSet<>();
     }
 
