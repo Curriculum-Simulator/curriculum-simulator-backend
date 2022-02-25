@@ -1,13 +1,12 @@
-package webg6.pae.dao;
+package alahyaoui.curriculum.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import webg6.pae.models.Course;
-import webg6.pae.models.Section;
+import alahyaoui.curriculum.model.Course;
+import alahyaoui.curriculum.model.Section;
 
 @Repository
 public interface CourseRepository extends CrudRepository<Course, String> {
