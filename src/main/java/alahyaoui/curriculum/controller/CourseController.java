@@ -20,7 +20,7 @@ public class CourseController {
     @Autowired
     private final CourseService courseService;
 
-    @GetMapping("/course")
+    @GetMapping("/courses")
     public String getCourses(Model model, @RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
         List<Course> courses = courseService.getCoursesBy(filter, field);
         model.addAttribute("courses", courses);
@@ -28,14 +28,14 @@ public class CourseController {
         return "course_search";
     }
 
-    @GetMapping("/course/all")
+    @GetMapping("/courses/all")
     public String getAllCourses(Model model) {
         List<Course> courses = courseService.getAllCourses();
         model.addAttribute("courses", courses);
         return "course_result";
     }
 
-    @GetMapping("/course/gestion")
+    @GetMapping("/courses/gestion")
     public String getGestionCourses(Model model) {
         List<Course> courses = courseService.getGestionCourses();
 
@@ -45,7 +45,7 @@ public class CourseController {
         return "course_result";
     }
 
-    @GetMapping("/course/reseau")
+    @GetMapping("/courses/reseau")
     public String getReseauCourses(Model model) {
         List<Course> courses = courseService.getReseauCourses();
 
@@ -55,7 +55,7 @@ public class CourseController {
         return "course_result";
     }
 
-    @GetMapping("/course/industrielle")
+    @GetMapping("/courses/industrielle")
     public String getIndustrielleCourses(Model model) {
         List<Course> courses = courseService.getIndustrielleCourses();
         // Add attributes to model
