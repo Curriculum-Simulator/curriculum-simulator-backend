@@ -72,31 +72,32 @@ public class ProgramService {
         }
     }
 
-    public List<Course> getAnnualStudentProgram(Program program){
+    public List<Course> getAnnualStudentProgram(Program program) {
         List<Course> studentCourses = new ArrayList<>();
-        for(var entry: program.getStudentCourses().entrySet()){
-            //Je renvoi une erreur si il n'arrive pas à faire le lien entre le cours du formulaire et celui de la database
+        for (var entry : program.getStudentCourses().entrySet()) {
+            // Je renvoi une erreur si il n'arrive pas à faire le lien entre le cours du
+            // formulaire et celui de la database
             // à revoir !!!
             Course course = courseRepository.findById(entry.getKey()).orElseThrow();
             studentCourses.add(course);
 
         }
-        
+
         return studentCourses;
     }
 
     public void updateProgram(Program studentProgram) {
         for (var entry : studentProgram.getStudentCourses().entrySet()) {
-            var studentCourse = entry.getValue();
+            CourseStateDto courseState = entry.getValue();
             String courseId = entry.getKey();
             CourseNode courseNode = courseGraph.search(courseId);
 
-            if (studentCourse.getIsPassed()) {
-                studentCourse.setIsAccessible(false);
+            if (courseState.getIsPassed()) {
+                courseState.setIsAccessible(false);
             } else {
                 if (areAllPrerequisitesPassed(studentProgram, courseNode)
                         && areAllCorequisitesAccessible(studentProgram, courseNode)) {
-                    studentCourse.setIsAccessible(true);
+                    courseState.setIsAccessible(true);
                 }
             }
         }
@@ -106,8 +107,8 @@ public class ProgramService {
         var prerequisites = courseNode.getPrerequisites();
         for (var prerequisite : prerequisites) {
             String courseId = prerequisite.getId();
-            CourseStateDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
-            if (studentCourse.getIsPassed() == false) {
+            CourseStateDto courseState = studentProgram.getStudentProgramCourse(courseId);
+            if (courseState.getIsPassed() == false) {
                 return false;
             }
         }
@@ -118,8 +119,8 @@ public class ProgramService {
         var corequisites = courseNode.getCorequisites();
         for (var corequisite : corequisites) {
             String courseId = corequisite.getId();
-            CourseStateDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
-            if (studentCourse.getIsAccessible() == false) {
+            CourseStateDto courseState = studentProgram.getStudentProgramCourse(courseId);
+            if (courseState.getIsAccessible() == false) {
                 return false;
             }
         }
