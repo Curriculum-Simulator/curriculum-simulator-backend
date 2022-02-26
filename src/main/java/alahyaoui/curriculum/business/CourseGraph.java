@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CourseGraph {
 
-    private Set<CourseNode> nodes;// = new HashSet<>();
+    private Set<CourseNode> nodes;
 
     public CourseGraph() {
         nodes = new HashSet<>();
