@@ -1,4 +1,4 @@
-package webg6.pae.seeders;
+package alahyaoui.curriculum.seeders;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,10 +12,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import alahyaoui.curriculum.model.Course;
+import alahyaoui.curriculum.model.Section;
+import alahyaoui.curriculum.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
-import webg6.pae.dao.CourseRepository;
-import webg6.pae.models.Course;
-import webg6.pae.models.Section;
 
 @Component
 @RequiredArgsConstructor

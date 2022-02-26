@@ -1,4 +1,4 @@
-package webg6.pae.models;
+package alahyaoui.curriculum.model;
 
 public enum Section {
     COMMUN, INDUSTRIELLE_RESEAU, GESTION, INDUSTRIELLE, RESEAU, 

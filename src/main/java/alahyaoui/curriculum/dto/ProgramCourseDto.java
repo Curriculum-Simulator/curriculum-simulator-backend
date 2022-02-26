@@ -3,7 +3,7 @@ package alahyaoui.curriculum.dto;
 import lombok.Data;
 
 @Data
-public class ProgramDto {
+public class ProgramCourseDto {
 
     private final String courseId;
     private Boolean isPassed;
