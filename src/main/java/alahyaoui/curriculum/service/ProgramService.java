@@ -2,6 +2,8 @@ package alahyaoui.curriculum.service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -13,19 +15,22 @@ import org.springframework.stereotype.Service;
 import alahyaoui.curriculum.business.CourseGraph;
 import alahyaoui.curriculum.business.CourseNode;
 import alahyaoui.curriculum.business.Program;
-import alahyaoui.curriculum.dto.ProgramCourseDto;
+import alahyaoui.curriculum.dto.CourseStateDto;
+import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.repository.CourseRepository;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class ProgramService {
 
     @Autowired
-    CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
+    @Autowired
     private final CourseGraph courseGraph;
 
-    public ProgramService() throws NumberFormatException, CsvValidationException, IOException {
-        courseGraph = new CourseGraph();
+    public void init() throws NumberFormatException, CsvValidationException, IOException {
         initGraph();
         initPrerequisites();
         initCorequisites();
@@ -67,10 +72,23 @@ public class ProgramService {
         }
     }
 
+    public List<Course> getAnnualStudentProgram(Program program){
+        List<Course> studentCourses = new ArrayList<>();
+        for(var entry: program.getStudentCourses().entrySet()){
+            //Je renvoi une erreur si il n'arrive pas à faire le lien entre le cours du formulaire et celui de la database
+            // à revoir !!!
+            Course course = courseRepository.findById(entry.getKey()).orElseThrow();
+            studentCourses.add(course);
+
+        }
+        
+        return studentCourses;
+    }
+
     public void updateProgram(Program studentProgram) {
         for (var entry : studentProgram.getStudentCourses().entrySet()) {
             var studentCourse = entry.getValue();
-            String courseId = studentCourse.getCourseId();
+            String courseId = entry.getKey();
             CourseNode courseNode = courseGraph.search(courseId);
 
             if (studentCourse.getIsPassed()) {
@@ -88,7 +106,7 @@ public class ProgramService {
         var prerequisites = courseNode.getPrerequisites();
         for (var prerequisite : prerequisites) {
             String courseId = prerequisite.getId();
-            ProgramCourseDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
+            CourseStateDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
             if (studentCourse.getIsPassed() == false) {
                 return false;
             }
@@ -100,7 +118,7 @@ public class ProgramService {
         var corequisites = courseNode.getCorequisites();
         for (var corequisite : corequisites) {
             String courseId = corequisite.getId();
-            ProgramCourseDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
+            CourseStateDto studentCourse = studentProgram.getStudentProgramCourse(courseId);
             if (studentCourse.getIsAccessible() == false) {
                 return false;
             }
