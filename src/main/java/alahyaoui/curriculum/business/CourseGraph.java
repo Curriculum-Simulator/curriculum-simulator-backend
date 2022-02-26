@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CourseGraph {
 
     private Set<CourseNode> nodes;// = new HashSet<>();
