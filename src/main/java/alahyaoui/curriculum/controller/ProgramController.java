@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import alahyaoui.curriculum.business.Program;
-import alahyaoui.curriculum.dto.CourseStateDto;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
-import alahyaoui.curriculum.service.CourseService;
 import alahyaoui.curriculum.service.ProgramService;
 import lombok.RequiredArgsConstructor;
 

@@ -3,6 +3,7 @@ package alahyaoui.curriculum.service;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import com.opencsv.CSVReader;
@@ -29,6 +30,10 @@ public class ProgramService {
 
     @Autowired
     private final CourseGraph courseGraph;
+
+    Comparator<Course> sectionComparator = (course1, course2) -> course1.getSection().compareTo(course2.getSection());
+
+    Comparator<Course> idComparator = (course1, course2) -> course1.getId().compareTo(course2.getId());
 
     public void init() throws NumberFormatException, CsvValidationException, IOException {
         initGraph();
@@ -87,6 +92,7 @@ public class ProgramService {
             }
         }
 
+        annualStudentProgram.sort(sectionComparator);
         return annualStudentProgram;
     }
 
