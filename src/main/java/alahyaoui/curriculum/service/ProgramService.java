@@ -17,7 +17,7 @@ import alahyaoui.curriculum.business.CourseNode;
 import alahyaoui.curriculum.business.Program;
 import alahyaoui.curriculum.dto.CourseStateDto;
 import alahyaoui.curriculum.model.Course;
-import alahyaoui.curriculum.repository.CourseRepository;
+import alahyaoui.curriculum.model.Section;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class ProgramService {
 
     @Autowired
-    private final CourseRepository courseRepository;
+    private final CourseService courseService;
 
     @Autowired
     private final CourseGraph courseGraph;
@@ -37,7 +37,7 @@ public class ProgramService {
     }
 
     private void initGraph() {
-        var courses = courseRepository.findAll();
+        var courses = courseService.getAllCourses();
         for (var course : courses) {
             CourseNode node = new CourseNode(course.getId());
             courseGraph.addNode(node);
@@ -72,22 +72,26 @@ public class ProgramService {
         }
     }
 
+    public Program getStudentProgram(Section section) {
+        List<Course> courses = courseService.getSectionCourses(section);
+        return new Program(courses);
+    }
+
     public List<Course> getAnnualStudentProgram(Program program) {
         List<Course> studentCourses = new ArrayList<>();
-        for (var entry : program.getStudentCourses().entrySet()) {
+        for (var entry : program.getCoursesToStates().entrySet()) {
             // Je renvoi une erreur si il n'arrive pas à faire le lien entre le cours du
             // formulaire et celui de la database
             // à revoir !!!
-            Course course = courseRepository.findById(entry.getKey()).orElseThrow();
+            Course course = courseService.getCourseById(entry.getKey());
             studentCourses.add(course);
-
         }
 
         return studentCourses;
     }
 
     public void updateProgram(Program studentProgram) {
-        for (var entry : studentProgram.getStudentCourses().entrySet()) {
+        for (var entry : studentProgram.getCoursesToStates().entrySet()) {
             CourseStateDto courseState = entry.getValue();
             String courseId = entry.getKey();
             CourseNode courseNode = courseGraph.search(courseId);
