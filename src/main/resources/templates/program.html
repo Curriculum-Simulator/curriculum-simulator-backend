@@ -92,7 +92,7 @@
                         <!-- End of List of Courses-->
                     </div>
 
-                    <div th:unless="${#lists.isEmpty(pae)}">
+                    <div th:unless="${not #lists.isEmpty(pae)}">
                         <span>Aucun résultat trouvé</span>
                     </div>
 
