@@ -37,30 +37,31 @@ public class CourseController {
 
     @GetMapping("/courses/gestion")
     public String getGestionCourses(Model model) {
-        List<Course> courses = courseService.getGestionCourses();
-
+        Section section = Section.GESTION;
+        List<Course> courses = courseService.getSectionCourses(section);
         // Add attributes to model
         model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.GESTION);
+        model.addAttribute("section", section);
         return "course_result";
     }
 
     @GetMapping("/courses/reseau")
     public String getReseauCourses(Model model) {
-        List<Course> courses = courseService.getReseauCourses();
-
+        Section section = Section.RESEAU;
+        List<Course> courses = courseService.getSectionCourses(section);
         // Add attributes to model
         model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.RESEAU);
+        model.addAttribute("section", section);
         return "course_result";
     }
 
     @GetMapping("/courses/industrielle")
     public String getIndustrielleCourses(Model model) {
-        List<Course> courses = courseService.getIndustrielleCourses();
+        Section section = Section.INDUSTRIELLE;
+        List<Course> courses = courseService.getSectionCourses(section);
         // Add attributes to model
         model.addAttribute("courses", courses);
-        model.addAttribute("section", Section.INDUSTRIELLE);
+        model.addAttribute("section", section);
         return "course_result";
     }
 
