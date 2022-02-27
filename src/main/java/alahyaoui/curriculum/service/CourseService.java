@@ -53,6 +53,15 @@ public class CourseService {
         return (List<Course>) courseRepository.findAll();
     }
 
+        /**
+     * Gets the course corresponding to the given id.
+     * 
+     * @return a course
+     */
+    public  Course getCourseById(String id) {
+        return courseRepository.findById(id).orElseThrow();
+    }
+
     /**
      * Gets all the section courses.
      * 
