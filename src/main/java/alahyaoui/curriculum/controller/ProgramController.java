@@ -31,7 +31,7 @@ public class ProgramController {
     }
 
     @GetMapping("/program")
-    public String getProgramView(Model model, @RequestParam(required = false) Section section) throws Exception {
+    public String getProgramView(Model model, @RequestParam(required = true) Section section) throws Exception {
         //TOFIX INIT MADE EACH TIME WE ACCESS THE ROUTE
         programService.init();
         Program program = programService.getStudentProgram(section);
