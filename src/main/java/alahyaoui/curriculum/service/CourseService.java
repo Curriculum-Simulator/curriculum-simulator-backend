@@ -10,7 +10,6 @@ import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 
-
 @Service
 @RequiredArgsConstructor
 public class CourseService {
@@ -55,11 +54,36 @@ public class CourseService {
     }
 
     /**
+     * Gets all the section courses.
+     * 
+     * @return a list of course
+     */
+    public List<Course> getSectionCourses(Section section) {
+        List<Course> courses;
+
+        switch (section) {
+            case GESTION:
+                courses = getGestionCourses();
+                break;
+            case INDUSTRIELLE:
+                courses = getIndustrielleCourses();
+                break;
+            case RESEAU:
+                courses = getReseauCourses();
+                break;
+            default:
+                throw new IllegalArgumentException("Section must be either GESTION, INDUSTRIELLE and RESEAU");
+        }
+
+        return courses;
+    }
+
+    /**
      * Gets all the Gestion courses.
      * 
      * @return a list of course
      */
-    public List<Course> getGestionCourses() {
+    private List<Course> getGestionCourses() {
         List<Course> courses = courseRepository.findBySection(Section.COMMUN);
         courses.addAll(courseRepository.findBySection(Section.GESTION));
 
@@ -71,7 +95,7 @@ public class CourseService {
      * 
      * @return a list of course
      */
-    public List<Course> getReseauCourses() {
+    private List<Course> getReseauCourses() {
         List<Course> courses = courseRepository.findBySection(Section.COMMUN);
         courses.addAll(courseRepository.findBySection(Section.RESEAU));
         courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
@@ -84,7 +108,7 @@ public class CourseService {
      * 
      * @return a list of course
      */
-    public List<Course> getIndustrielleCourses() {
+    private List<Course> getIndustrielleCourses() {
         List<Course> courses = courseRepository.findBySection(Section.COMMUN);
         courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE));
         courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
