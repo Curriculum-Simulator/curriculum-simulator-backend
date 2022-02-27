@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import alahyaoui.curriculum.business.Program;
 import alahyaoui.curriculum.model.Course;
@@ -30,10 +31,9 @@ public class ProgramController {
     }
 
     @GetMapping("/program")
-    public String getProgramView(Model model) throws Exception {
+    public String getProgramView(Model model, @RequestParam(required = false) Section section) throws Exception {
         //TOFIX INIT MADE EACH TIME WE ACCESS THE ROUTE
         programService.init();
-        Section section = Section.GESTION;
         Program program = programService.getStudentProgram(section);
         model.addAttribute("program", program);
         return "program";
