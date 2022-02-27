@@ -39,7 +39,7 @@ public class CourseSeeder implements CommandLineRunner {
 
     private void seedSection(Section section)
             throws FileNotFoundException, IOException, CsvValidationException, NumberFormatException {
-        String path = "static/data/cours_" + section.toString().toLowerCase() + ".csv";
+        String path = "static/data/courses_" + section.toString().toLowerCase() + ".csv";
         var fileReader = new InputStreamReader(new ClassPathResource(path).getInputStream());
 
         try (CSVReader reader = new CSVReader(fileReader)) {
@@ -48,10 +48,10 @@ public class CourseSeeder implements CommandLineRunner {
                 Course course = new Course();
                 course.setId(values[1]);
                 course.setTitle(values[2]);
+                course.setQuarter(Integer.parseInt(values[0]));
                 course.setCredits(Integer.parseInt(values[3]));
                 course.setSection(section);
                 course.setHours(Integer.parseInt(values[4]));
-                // course.setStudents(new ArrayList<>());
                 courseRepository.save(course);
             }
         }
