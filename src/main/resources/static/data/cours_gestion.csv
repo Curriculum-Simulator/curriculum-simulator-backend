@@ -1,21 +1,21 @@
 Q2,WEBG2,Développement Web I,5,60
+Q3,ATLG3,Atelier Logiciel I,5,48
 Q3,CAIG3,Communication contextualisée III,3,48
 Q3,DRTG3,Droit et philosophie contextualisés,2,24
-Q3,ATLG3,Atelier Logiciel I,5,48
+Q4,ATLG4,Atelier Logiciel II,4,48
+Q4,CPRG4,Complément réseaux,2,24
 Q4,CPTG4,Comptabilité contextualisée II,2,24
 Q4,ECOG4,Economie contextualisée,3,36
-Q4,ATLG4,Atelier Logiciel II,4,48
 Q4,ERGG4,Ergonomie du logiciel,2,24
 Q4,LPDG4,Laboratoire persistance des données III,2,24
 Q4,SECG4,Sécurité,2,24
-Q4,CPRG4,Complément réseaux,2,24
+Q4,SYSG4,Systèmes d'exploitation II,5,72
 Q4,WEBG4,Développement Web II,3,24
-Q5,PRJG5,Gestion de projet,5,72
-Q5,ORGG5,Organisation et entreprise,3,36
+Q5,DONG5,Persistance des données IV,2,24
 Q5,ERPG5,Progiciel de gestion intégré,5,48
 Q5,MOBG5,Développement mobile,5,48
-Q5,WEBG5,Développement Web III,3,48
-Q5,DONG5,Persistance des données IV,2,24
-Q4,SYSG4,Systèmes d'exploitation II,5,72
+Q5,ORGG5,Organisation et entreprise,3,36
+Q5,PRJG5,Gestion de projet,5,72
 Q5,SYSG5,Systèmes d'exploitation III,4,36
+Q5,WEBG5,Développement Web III,3,48
 Q6,ETEG6,Epreuve terminale,30,350
