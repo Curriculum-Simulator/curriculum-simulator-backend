@@ -13,20 +13,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import alahyaoui.curriculum.business.Program;
 import alahyaoui.curriculum.dto.CourseStateDto;
+import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.CourseService;
 import alahyaoui.curriculum.service.ProgramService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class ProgramController {
 
-    @Autowired
     private final ProgramService programService;
+    
+    @Autowired
+    public ProgramController(ProgramService programService) throws NumberFormatException, CsvValidationException, IOException{
+        this.programService = programService;
+        //programService.init();
+    }
 
     @GetMapping("/program")
     public String getProgramView(Model model) throws Exception {
+        //TOFIX INIT MADE EACH TIME WE ACCESS THE ROUTE
         programService.init();
         Section section = Section.GESTION;
         Program program = programService.getStudentProgram(section);
@@ -37,8 +44,8 @@ public class ProgramController {
     @PostMapping("/program")
     public String submitProgram(Model model, Program program){
         programService.updateProgram(program);
-        var courses = programService.getAnnualStudentProgram(program);
+        List<Course> courses = programService.getAnnualStudentProgram(program);
         model.addAttribute("pae", courses);
-        return "redirect:program";
+        return "program";
     }
 }
