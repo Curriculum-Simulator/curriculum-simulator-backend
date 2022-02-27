@@ -32,7 +32,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <form class="form shadow" th:action="@{/program}" th:object="${program}"
+                                    <form class="form shadow" id="programForm" th:action="@{/program}" th:object="${program}"
                                         method="POST">
                                         <table class="table table-striped table-hover shadow">
                                             <tr class="table-dark">
@@ -64,7 +64,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" form="programForm" class="btn btn-primary">Save changes</button>
                                 </div>
 
                             </div>
@@ -92,7 +92,7 @@
                         <!-- End of List of Courses-->
                     </div>
 
-                    <div th:unless="${not #lists.isEmpty(pae)}">
+                    <div th:unless="${#lists.isEmpty(pae)}">
                         <span>Aucun résultat trouvé</span>
                     </div>
 
