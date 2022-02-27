@@ -36,10 +36,10 @@ public class CourseService {
                     courses = courseRepository.findByTitleContaining(field);
                     break;
                 default:
-                    courses = (List<Course>) courseRepository.findAll();
+                    courses = (List<Course>) courseRepository.findAllByOrderByQuarterAscIdAsc();
             }
         } else {
-            courses = (List<Course>) courseRepository.findAll();
+            courses = (List<Course>) courseRepository.findAllByOrderByQuarterAscIdAsc();
         }
         return courses;
     }
@@ -50,7 +50,7 @@ public class CourseService {
      * @return a list of course
      */
     public List<Course> getAllCourses() {
-        return (List<Course>) courseRepository.findAll();
+        return (List<Course>) courseRepository.findAllByOrderByQuarterAscIdAsc();
     }
 
         /**
