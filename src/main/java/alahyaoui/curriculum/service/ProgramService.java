@@ -78,7 +78,6 @@ public class ProgramService {
     }
 
     public List<Course> getAnnualStudentProgram(Program program) {
-        System.out.println("Try to get a course list for the pae");
         List<Course> annualStudentProgram = new ArrayList<>();
         for (var entry : program.getCoursesToStates().entrySet()) {
             CourseStateDto courseState = entry.getValue();
