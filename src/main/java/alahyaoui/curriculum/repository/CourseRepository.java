@@ -11,6 +11,8 @@ import alahyaoui.curriculum.model.Section;
 @Repository
 public interface CourseRepository extends CrudRepository<Course, String> {
 
+    List<Course> findAllByOrderByQuarterAscIdAsc();
+
     List<Course> findByIdContaining(String id);
 
     List<Course> findByTitleContaining(String title);
