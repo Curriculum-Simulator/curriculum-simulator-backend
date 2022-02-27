@@ -29,8 +29,8 @@ public class Course {
     @NotBlank(message = "Title is mandatory")
     private String title;
 
-    @Min(value = MIN_QUARTER, message = "Tickets must be greater than or equal to " + MIN_QUARTER)
-    @Max(value = MAX_QUARTER, message = "Block must be smaller than or equal to 3" + MAX_QUARTER)
+    @Min(value = MIN_QUARTER, message = "Quarter must be greater than or equal to " + MIN_QUARTER)
+    @Max(value = MAX_QUARTER, message = "Quarter must be smaller than or equal to " + MAX_QUARTER)
     private int quarter;
 
     @Positive(message = "Credits must be positive")
