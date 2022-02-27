@@ -78,16 +78,17 @@ public class ProgramService {
     }
 
     public List<Course> getAnnualStudentProgram(Program program) {
-        List<Course> studentCourses = new ArrayList<>();
+        System.out.println("Try to get a course list for the pae");
+        List<Course> annualStudentProgram = new ArrayList<>();
         for (var entry : program.getCoursesToStates().entrySet()) {
-            // Je renvoi une erreur si il n'arrive pas à faire le lien entre le cours du
-            // formulaire et celui de la database
-            // à revoir !!!
-            Course course = courseService.getCourseById(entry.getKey());
-            studentCourses.add(course);
+            CourseStateDto courseState = entry.getValue();
+            if (courseState.getIsAccessible()) {
+                Course course = courseService.getCourseById(entry.getKey());
+                annualStudentProgram.add(course);
+            }
         }
 
-        return studentCourses;
+        return annualStudentProgram;
     }
 
     public void updateProgram(Program studentProgram) {
