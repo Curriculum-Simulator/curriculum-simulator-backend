@@ -13,6 +13,7 @@
 	<name>pae</name>
 	<description>Pae project made in Spring Boot</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>15</java.version>
 	</properties>
 	<dependencies>
