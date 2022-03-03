@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -35,13 +37,15 @@ public class ProgramService {
 
     Comparator<Course> idComparator = (course1, course2) -> course1.getId().compareTo(course2.getId());
 
-    public void init() throws NumberFormatException, CsvValidationException, IOException {
+    @PostConstruct
+    private void init() throws NumberFormatException, CsvValidationException, IOException {
         initGraph();
         initPrerequisites();
         initCorequisites();
     }
 
     private void initGraph() {
+        courseGraph.clear();
         var courses = courseService.getAllCourses();
         for (var course : courses) {
             CourseNode node = new CourseNode(course.getId());

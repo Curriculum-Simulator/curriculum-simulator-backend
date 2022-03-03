@@ -1,7 +1,10 @@
 package alahyaoui.curriculum.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "courses")
 public class Course {
 
     private static final int MIN_QUARTER = 1;
@@ -34,6 +38,7 @@ public class Course {
     @Positive(message = "Credits must be positive")
     private int credits;
 
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Section is mandatory")
     private Section section;
 
