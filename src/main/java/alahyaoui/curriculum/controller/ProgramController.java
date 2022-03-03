@@ -1,9 +1,6 @@
 package alahyaoui.curriculum.controller;
 
-import java.io.IOException;
 import java.util.List;
-
-import com.opencsv.exceptions.CsvValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,21 +16,14 @@ import alahyaoui.curriculum.service.ProgramService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class ProgramController {
 
-    private final ProgramService programService;
-    
     @Autowired
-    public ProgramController(ProgramService programService) throws NumberFormatException, CsvValidationException, IOException{
-        this.programService = programService;
-        //programService.init();
-    }
+    private final ProgramService programService;
 
     @GetMapping("/program")
-    public String getProgramView(Model model, @RequestParam(required = true) Section section) throws Exception {
-        //TOFIX INIT MADE EACH TIME WE ACCESS THE ROUTE
-        programService.init();
+    public String getProgramView(Model model, @RequestParam(required = false) Section section) throws Exception {
         Program program = programService.getStudentProgram(section);
         model.addAttribute("program", program);
         return "program";

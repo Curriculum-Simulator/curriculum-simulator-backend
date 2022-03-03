@@ -40,4 +40,7 @@ public class CourseGraph {
         return nodes;
     }
 
+    public void clear(){
+        nodes.clear();
+    }
 }
