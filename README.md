@@ -1,6 +1,8 @@
 # Introduction
 
-Gestionnaire du Programme annuel des étudiant en Java Spring Boot
+Annual Student Program Simulator
 
-## Description Programme annuel de l'étudiant (PAE)
-Le Programme annuel de l'étudiant ou PAE est la liste des Unités d'Enseignement (UE = cours) qu'un étudiant va suivre effectivement durant l'année académique.
+## Description of an Annual Student Program (ASP)
+
+The Annual Student Program or ASP is the list of Teaching Units (TUs = courses) that a student will actually take during the academic year.
+With this Annual Student Program Simulator you will be able to view your next annual student program based on the courses you pass and the courses that are available to you
