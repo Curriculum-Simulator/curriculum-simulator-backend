@@ -5,8 +5,7 @@ import lombok.Data;
 @Data
 public class CourseStateDto {
 
-    private Boolean isPassed;
-    private Boolean isAccessible;
+    private boolean isPassed;
+    private boolean isAccessible;
 
-    
 }

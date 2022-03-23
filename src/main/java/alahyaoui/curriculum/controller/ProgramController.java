@@ -31,6 +31,9 @@ public class ProgramController {
 
     @PostMapping("/program")
     public String submitProgram(Model model, Program program){
+        /*for(var e : program.getCoursesToStates().entrySet()){
+            e.getValue().isPassed();
+        }*/
         programService.updateProgram(program);
         List<Course> courses = programService.getAnnualStudentProgram(program);
         model.addAttribute("pae", courses);

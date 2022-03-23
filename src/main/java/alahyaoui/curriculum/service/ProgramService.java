@@ -90,7 +90,7 @@ public class ProgramService {
         List<Course> annualStudentProgram = new ArrayList<>();
         for (var entry : program.getCoursesToStates().entrySet()) {
             CourseStateDto courseState = entry.getValue();
-            if (courseState.getIsAccessible()) {
+            if (courseState.isAccessible()) {
                 Course course = courseService.getCourseById(entry.getKey());
                 annualStudentProgram.add(course);
             }
@@ -106,12 +106,12 @@ public class ProgramService {
             String courseId = entry.getKey();
             CourseNode courseNode = courseGraph.search(courseId);
 
-            if (courseState.getIsPassed()) {
-                courseState.setIsAccessible(false);
+            if (courseState.isPassed()) {
+                courseState.setAccessible(false);
             } else {
                 if (areAllPrerequisitesPassed(studentProgram, courseNode)
                         && areAllCorequisitesAccessible(studentProgram, courseNode)) {
-                    courseState.setIsAccessible(true);
+                    courseState.setAccessible(true);
                 }
             }
         }
@@ -122,7 +122,7 @@ public class ProgramService {
         for (var prerequisite : prerequisites) {
             String courseId = prerequisite.getId();
             CourseStateDto courseState = studentProgram.getStudentProgramCourse(courseId);
-            if (courseState.getIsPassed() == false) {
+            if (courseState.isPassed() == false) {
                 return false;
             }
         }
@@ -134,7 +134,7 @@ public class ProgramService {
         for (var corequisite : corequisites) {
             String courseId = corequisite.getId();
             CourseStateDto courseState = studentProgram.getStudentProgramCourse(courseId);
-            if (courseState.getIsAccessible() == false) {
+            if (courseState.isAccessible() == false) {
                 return false;
             }
         }
