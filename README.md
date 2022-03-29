@@ -16,3 +16,6 @@ With a ssh key:
 ```
 $ git clone git@github.com:alahyaoui/curriculum-simulator.git
 ```
+
+# Author
+- **Ayoub Lahyaoui**
