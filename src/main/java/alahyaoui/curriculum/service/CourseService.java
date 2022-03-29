@@ -18,12 +18,11 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     /**
-     * Gets the prices corresponding to the given field
-     * according to the filter option given in the parameter.
+     * Get a list of courses based on the filter and field.
      * 
-     * @param filter the filter option
-     * @param field  the field value to look for
-     * @return a List of courses
+     * @param filter The filter to use. Can be "id" or "title".
+     * @param field  The field to filter by.
+     * @return A list of courses.
      */
     public List<Course> getCoursesBy(String filter, String field) {
         List<Course> courses;
@@ -45,27 +44,29 @@ public class CourseService {
     }
 
     /**
-     * Gets all the courses.
+     * Get all the courses in the database
      * 
-     * @return a list of course
+     * @return A list of all the courses from the database.
      */
     public List<Course> getAllCourses() {
         return (List<Course>) courseRepository.findAllByOrderByQuarterAscIdAsc();
     }
 
-        /**
-     * Gets the course corresponding to the given id.
+    /**
+     * Get a course by its id.
      * 
-     * @return a course
+     * @param id The id of the course we want to retrieve.
+     * @return a course or throw an error if not found.
      */
-    public  Course getCourseById(String id) {
+    public Course getCourseById(String id) {
         return courseRepository.findById(id).orElseThrow();
     }
 
     /**
-     * Gets all the section courses.
+     * Get the courses for a given section
      * 
-     * @return a list of course
+     * @param section The section of the course.
+     * @return A list of courses.
      */
     public List<Course> getSectionCourses(Section section) {
         List<Course> courses;
@@ -78,7 +79,10 @@ public class CourseService {
                 courses = getIndustrielleCourses();
                 break;
             case RESEAU:
-                courses = getReseauCourses();
+                List<Course> courses1 = courseRepository.findBySection(Section.COMMUN);
+                courses1.addAll(courseRepository.findBySection(Section.RESEAU));
+                courses1.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
+                courses = courses1;
                 break;
             default:
                 throw new IllegalArgumentException("Section must be either GESTION, INDUSTRIELLE and RESEAU");
@@ -88,9 +92,10 @@ public class CourseService {
     }
 
     /**
-     * Gets all the Gestion courses.
+     * Get all the courses from the database that are in the COMMON and GESTION
+     * sections.
      * 
-     * @return a list of course
+     * @return A list of courses.
      */
     private List<Course> getGestionCourses() {
         List<Course> courses = courseRepository.findBySection(Section.COMMUN);
@@ -100,22 +105,10 @@ public class CourseService {
     }
 
     /**
-     * Gets all the Reseau courses.
+     * It returns a list of all the courses in the database that are in the COMMON,
+     * INDUSTRIAL and INDUSTRIAL_NETWORK sections.
      * 
-     * @return a list of course
-     */
-    private List<Course> getReseauCourses() {
-        List<Course> courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.RESEAU));
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
-
-        return courses;
-    }
-
-    /**
-     * Gets all the Industrielle courses.
-     * 
-     * @return a list of course
+     * @return A list of courses.
      */
     private List<Course> getIndustrielleCourses() {
         List<Course> courses = courseRepository.findBySection(Section.COMMUN);
