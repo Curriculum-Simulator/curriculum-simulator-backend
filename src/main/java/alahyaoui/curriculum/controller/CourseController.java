@@ -70,10 +70,10 @@ public class CourseController {
     public String getSectionCourses(Model model, @PathVariable String userSection) {
         Section section;
         switch (userSection) {
-            case "gestion" -> section = Section.GESTION;
-            case "reseau" -> section = Section.RESEAU;
-            case "industrielle" -> section = Section.INDUSTRIELLE;
-            default -> section = Section.GESTION;
+            case "management" -> section = Section.MANAGEMENT;
+            case "network" -> section = Section.NETWORK;
+            case "industrial" -> section = Section.INDUSTRIAL;
+            default -> section = Section.MANAGEMENT;
         }
         List<Course> courses = courseService.getSectionCourses(section);
 

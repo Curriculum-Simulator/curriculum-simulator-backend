@@ -67,7 +67,6 @@ public class ProgramService {
     private void initPrerequisites() throws NumberFormatException, CsvValidationException, IOException {
         String path = "static/data/prerequisites.csv";
         var fileReader = new InputStreamReader(new ClassPathResource(path).getInputStream());
-
         try (CSVReader reader = new CSVReader(fileReader)) {
             String[] values;
             while ((values = reader.readNext()) != null) {
@@ -84,7 +83,6 @@ public class ProgramService {
     private void initCorequisites() throws NumberFormatException, CsvValidationException, IOException {
         String path = "static/data/corequisites.csv";
         var fileReader = new InputStreamReader(new ClassPathResource(path).getInputStream());
-
         try (CSVReader reader = new CSVReader(fileReader)) {
             String[] values;
             while ((values = reader.readNext()) != null) {
