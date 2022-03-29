@@ -7,6 +7,9 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * This class is used to create a graph of CourseNode objects
+ */
 @Component
 public class CourseGraph {
 
@@ -39,6 +42,12 @@ public class CourseGraph {
         }
     }
 
+    /**
+     * Search for a node in the tree by its ID
+     * 
+     * @param id The id of the node to be searched.
+     * @return The CourseNode object that matches the id.
+     */
     public CourseNode search(String id) {
         for (Iterator<CourseNode> it = nodes.iterator(); it.hasNext();) {
             CourseNode node = it.next();
@@ -49,10 +58,18 @@ public class CourseGraph {
         return null;
     }
 
+    /**
+     * Returns the set of nodes in the graph
+     * 
+     * @return The set of nodes.
+     */
     public Set<CourseNode> getNodes() {
         return nodes;
     }
 
+    /**
+     * Clear the nodes list.
+     */
     public void clear(){
         nodes.clear();
     }
