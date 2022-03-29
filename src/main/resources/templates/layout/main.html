@@ -4,9 +4,11 @@
 <head>
     <title>Tableau de bord</title>
     <meta charset="UTF-8">
-    <meta name="description" content="A Curriculum Simulator for the École Supérieure d'Informatique | HE2B - ESI students powered by Thymeleaf, Bootstrap and Java Spring Boot">
-    <meta name="keywords" content="Curriculum, Simulator, , PAE, Programme Annuel Etudiant, Annual Student Program, ESI, HE2B, École Supérieure d'Informatique, Haute École Bruxelles-Brabant, Thymeleaf, Bootstrap, Java, Spring Boot">
-    <meta name="author" content="Ayoub Lahyaoui">
+    <meta name="apple-mobile-web-app-title" content="Curriculum Simulator">
+    <meta name="application-name" content="Curriculum Simulator">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Font Awesome-->
@@ -21,8 +23,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
 
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{img/icons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{img/icons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{img/icons/favicon-16x16.png}">
+    <link rel="mask-icon" th:href="@{img/safari-pinned-tab.svg}" color="#ffffff">
+    <link rel="shortcut icon" th:href="@{img/icons/favicon.ico}">
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-
 </head>
 
 <body class="d-flex flex-column min-vh-100">

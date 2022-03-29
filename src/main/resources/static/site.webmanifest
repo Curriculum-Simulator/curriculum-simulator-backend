@@ -1,0 +1,27 @@
+{
+    "name": "Curriculum Simulator",
+    "short_name": "Curriculum Simulator",
+    "author" : "Ayoub Lahyaoui",
+    "description": "A Curriculum Simulator for the École Supérieure d'Informatique | HE2B - ESI students powered by Thymeleaf, Bootstrap and Java Spring Boot",
+    "icons": [
+        {
+            "src": "img/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "dir": "ltr",
+    "lang": "en",
+    "keywords": "Curriculum, Simulator, , PAE, Programme Annuel Etudiant, Annual Student Program, ESI, HE2B, École Supérieure d'Informatique, Haute École Bruxelles-Brabant, Thymeleaf, Bootstrap, Java, Spring Boot"
+}
