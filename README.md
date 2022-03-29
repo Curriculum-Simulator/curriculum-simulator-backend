@@ -12,9 +12,16 @@ Without a ssh key:
 ```
 $ git clone https://github.com/alahyaoui/curriculum-simulator.git
 ```
+
 With a ssh key:
 ```
 $ git clone git@github.com:alahyaoui/curriculum-simulator.git
+```
+
+# Execution
+You need maven installed and added to your PATH environment variables
+```
+mvn spring-boot:run
 ```
 
 # Author
