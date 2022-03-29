@@ -33,10 +33,15 @@ public class ProgramService {
     @Autowired
     private final CourseGraph courseGraph;
 
+    // This is a lambda expression that is used to sort the courses by their section.
     Comparator<Course> sectionComparator = (course1, course2) -> course1.getSection().compareTo(course2.getSection());
 
+    // This is a lambda expression that is used to sort the courses by their id.
     Comparator<Course> idComparator = (course1, course2) -> course1.getId().compareTo(course2.getId());
 
+    /**
+     * Initialize the graph and prerequisites and corequisites
+     */
     @PostConstruct
     private void init() throws NumberFormatException, CsvValidationException, IOException {
         initGraph();
@@ -44,6 +49,9 @@ public class ProgramService {
         initCorequisites();
     }
 
+    /**
+     * Initialize the graph by adding all the courses to it
+     */
     private void initGraph() {
         courseGraph.clear();
         var courses = courseService.getAllCourses();
@@ -53,6 +61,9 @@ public class ProgramService {
         }
     }
 
+    /**
+     * Reads in the prerequisites.csv file and adds the prerequisites to the course graph
+     */
     private void initPrerequisites() throws NumberFormatException, CsvValidationException, IOException {
         String path = "static/data/prerequisites.csv";
         var fileReader = new InputStreamReader(new ClassPathResource(path).getInputStream());
@@ -67,6 +78,9 @@ public class ProgramService {
         }
     }
 
+    /**
+     * Reads in the corequisites.csv file and adds the corequisites to the course nodes
+     */
     private void initCorequisites() throws NumberFormatException, CsvValidationException, IOException {
         String path = "static/data/corequisites.csv";
         var fileReader = new InputStreamReader(new ClassPathResource(path).getInputStream());
@@ -81,11 +95,23 @@ public class ProgramService {
         }
     }
 
+    /**
+     * Get the program for a section
+     * 
+     * @param section The section to get the program for.
+     * @return A Program object.
+     */
     public Program getStudentProgram(Section section) {
         List<Course> courses = courseService.getSectionCourses(section);
         return new Program(courses);
     }
 
+    /**
+     * Get the list of courses that are accessible to the student in the program
+     * 
+     * @param program The program that the student is enrolled in.
+     * @return The list of courses that the student can take in the program.
+     */
     public List<Course> getAnnualStudentProgram(Program program) {
         List<Course> annualStudentProgram = new ArrayList<>();
         for (var entry : program.getCoursesToStates().entrySet()) {
@@ -100,6 +126,12 @@ public class ProgramService {
         return annualStudentProgram;
     }
 
+    /**
+     * If all prerequisites are passed and all corequisites are accessible, then the course is
+     * accessible
+     * 
+     * @param studentProgram The student's program.
+     */
     public void updateProgram(Program studentProgram) {
         for (var entry : studentProgram.getCoursesToStates().entrySet()) {
             CourseStateDto courseState = entry.getValue();
@@ -117,6 +149,14 @@ public class ProgramService {
         }
     }
 
+    /**
+     * Given a student program and a course node, return true if all the prerequisites of the course
+     * node have been passed
+     * 
+     * @param studentProgram The student's program.
+     * @param courseNode The course node that we are trying to evaluate.
+     * @return The method returns a boolean value.
+     */
     private boolean areAllPrerequisitesPassed(Program studentProgram, CourseNode courseNode) {
         var prerequisites = courseNode.getPrerequisites();
         for (var prerequisite : prerequisites) {
@@ -129,6 +169,14 @@ public class ProgramService {
         return true;
     }
 
+    /**
+     * Given a student program and a course node, return true if all of the corequisites of the course
+     * node are accessible to the student
+     * 
+     * @param studentProgram The student's program.
+     * @param courseNode The course node that we are trying to add to the student program.
+     * @return The method returns a boolean value.
+     */
     private boolean areAllCorequisitesAccessible(Program studentProgram, CourseNode courseNode) {
         var corequisites = courseNode.getCorequisites();
         for (var corequisite : corequisites) {
