@@ -1,9 +1,6 @@
 const pwaCache = 'curriculum-simulator-site-cache';
 const assets = [
   '/',
-  '/index',
-  '/courses/*',
-  '/program',
   '/img/logo-esi.png',
   '/css/layout.css',
   '/css/style.css',
