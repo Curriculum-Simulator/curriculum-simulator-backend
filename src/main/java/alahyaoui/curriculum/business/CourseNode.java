@@ -5,6 +5,10 @@ import java.util.Set;
 import java.util.Iterator;
 import lombok.Value;
 
+/**
+ * A CourseNode object represents a course in the prerequisite tree. It has a unique id, a set of
+ * prerequisite CourseNode objects, and a set of corequisite CourseNode objects
+ */
 @Value
 public class CourseNode {
 
