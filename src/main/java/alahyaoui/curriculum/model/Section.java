@@ -1,5 +1,5 @@
 package alahyaoui.curriculum.model;
 
 public enum Section {
-    COMMUN, INDUSTRIELLE_RESEAU, GESTION, INDUSTRIELLE, RESEAU, 
+    COMMON, INDUSTRIAL_NETWORK, MANAGEMENT, INDUSTRIAL, NETWORK, 
 }

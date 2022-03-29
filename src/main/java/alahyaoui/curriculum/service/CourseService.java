@@ -72,20 +72,17 @@ public class CourseService {
         List<Course> courses;
 
         switch (section) {
-            case GESTION:
-                courses = getGestionCourses();
+            case MANAGEMENT:
+                courses = getManagementCourses();
                 break;
-            case INDUSTRIELLE:
-                courses = getIndustrielleCourses();
+            case INDUSTRIAL:
+                courses = getIndustrialCourses();
                 break;
-            case RESEAU:
-                List<Course> courses1 = courseRepository.findBySection(Section.COMMUN);
-                courses1.addAll(courseRepository.findBySection(Section.RESEAU));
-                courses1.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
-                courses = courses1;
+            case NETWORK:
+                courses = getNetworkCourses();
                 break;
             default:
-                throw new IllegalArgumentException("Section must be either GESTION, INDUSTRIELLE and RESEAU");
+                throw new IllegalArgumentException("Section must be either MANAGEMENT, INDUSTRIAL and NETWORK");
         }
 
         return courses;
@@ -97,9 +94,17 @@ public class CourseService {
      * 
      * @return A list of courses.
      */
-    private List<Course> getGestionCourses() {
-        List<Course> courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.GESTION));
+    private List<Course> getManagementCourses() {
+        List<Course> courses = courseRepository.findBySection(Section.COMMON);
+        courses.addAll(courseRepository.findBySection(Section.MANAGEMENT));
+
+        return courses;
+    }
+
+    private List<Course> getNetworkCourses() {
+        List<Course> courses = courseRepository.findBySection(Section.COMMON);
+        courses.addAll(courseRepository.findBySection(Section.NETWORK));
+        courses.addAll(courseRepository.findBySection(Section.INDUSTRIAL_NETWORK));
 
         return courses;
     }
@@ -110,10 +115,10 @@ public class CourseService {
      * 
      * @return A list of courses.
      */
-    private List<Course> getIndustrielleCourses() {
-        List<Course> courses = courseRepository.findBySection(Section.COMMUN);
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE));
-        courses.addAll(courseRepository.findBySection(Section.INDUSTRIELLE_RESEAU));
+    private List<Course> getIndustrialCourses() {
+        List<Course> courses = courseRepository.findBySection(Section.COMMON);
+        courses.addAll(courseRepository.findBySection(Section.INDUSTRIAL));
+        courses.addAll(courseRepository.findBySection(Section.INDUSTRIAL_NETWORK));
 
         return courses;
     }
