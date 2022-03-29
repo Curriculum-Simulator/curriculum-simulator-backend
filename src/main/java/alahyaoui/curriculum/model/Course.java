@@ -15,6 +15,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * The course class represents a course in the university
+ */
 @Entity
 @Data
 @NoArgsConstructor
