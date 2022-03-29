@@ -1,6 +1,6 @@
 # Introduction
 
-Annual Student Program Simulator
+Curriculum Simulator is a Progressive Web Application that allows students of my school to see which subjects are accessible to them according to the subjects they have passed.
 
 ## Description of an Annual Student Program (ASP)
 
