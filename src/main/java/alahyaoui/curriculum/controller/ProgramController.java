@@ -29,11 +29,18 @@ public class ProgramController {
         return "program";
     }
 
+    /**
+     * This method is used to update the student program and get the new computed
+     * student program.
+     * 
+     * @param model   The Model object is a Map that is used to pass information
+     *                between the controller
+     *                and the view.
+     * @param program The program to be updated.
+     * @return The program page is being returned.
+     */
     @PostMapping("/program")
-    public String submitProgram(Model model, Program program){
-        /*for(var e : program.getCoursesToStates().entrySet()){
-            e.getValue().isPassed();
-        }*/
+    public String submitProgram(Model model, Program program) {
         programService.updateProgram(program);
         List<Course> courses = programService.getAnnualStudentProgram(program);
         model.addAttribute("pae", courses);
