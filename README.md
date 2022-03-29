@@ -21,7 +21,7 @@ $ git clone git@github.com:alahyaoui/curriculum-simulator.git
 # Execution
 You need maven installed and added to your PATH environment variables
 ```
-mvn spring-boot:run
+$ mvn spring-boot:run
 ```
 
 # Author
