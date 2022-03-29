@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import alahyaoui.curriculum.model.Course;
@@ -20,49 +21,64 @@ public class CourseController {
     @Autowired
     private final CourseService courseService;
 
+    /**
+     * Get all courses from the database and add them to the model
+     * 
+     * @param model  The Model object is a Map that is used to pass data between the
+     *               controller and the
+     *               view.
+     * @param filter The filter to use. This is a string that is used to filter the
+     *               results.
+     * @param field  The field to filter by.
+     * @return The view name "course_search"
+     */
     @GetMapping("/courses")
-    public String getCourses(Model model, @RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
+    public String getCourses(Model model, @RequestParam(required = false) String filter,
+            @RequestParam(required = false) String field) {
         List<Course> courses = courseService.getCoursesBy(filter, field);
-        model.addAttribute("courses", courses);
 
+        model.addAttribute("courses", courses);
         return "course_search";
     }
 
+    /**
+     * Get all courses from the database and add them to the model
+     * 
+     * @param model The Model object is a Map that is used to pass data between the
+     *              controller and the
+     *              view.
+     * @return The view name course_result.
+     */
     @GetMapping("/courses/all")
     public String getAllCourses(Model model) {
         List<Course> courses = courseService.getAllCourses();
+
         model.addAttribute("courses", courses);
         return "course_result";
     }
 
-    @GetMapping("/courses/gestion")
-    public String getGestionCourses(Model model) {
-        Section section = Section.GESTION;
+    /**
+     * Get all courses of a given section
+     * 
+     * @param model       The Model object is a Map that is used to pass data
+     *                    between the controller and the
+     *                    view.
+     * @param userSection The section the user is looking for.
+     * @return The view name "course_result"
+     */
+    @GetMapping("/courses/{userSection}")
+    public String getSectionCourses(Model model, @PathVariable String userSection) {
+        Section section;
+        switch (userSection) {
+            case "gestion" -> section = Section.GESTION;
+            case "reseau" -> section = Section.RESEAU;
+            case "industrielle" -> section = Section.INDUSTRIELLE;
+            default -> section = Section.GESTION;
+        }
         List<Course> courses = courseService.getSectionCourses(section);
-        // Add attributes to model
+
         model.addAttribute("courses", courses);
         model.addAttribute("section", section);
         return "course_result";
     }
-
-    @GetMapping("/courses/reseau")
-    public String getReseauCourses(Model model) {
-        Section section = Section.RESEAU;
-        List<Course> courses = courseService.getSectionCourses(section);
-        // Add attributes to model
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", section);
-        return "course_result";
-    }
-
-    @GetMapping("/courses/industrielle")
-    public String getIndustrielleCourses(Model model) {
-        Section section = Section.INDUSTRIELLE;
-        List<Course> courses = courseService.getSectionCourses(section);
-        // Add attributes to model
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", section);
-        return "course_result";
-    }
-
 }
