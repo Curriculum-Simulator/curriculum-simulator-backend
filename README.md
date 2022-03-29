@@ -6,3 +6,13 @@ Annual Student Program Simulator
 
 The Annual Student Program or ASP is the list of Teaching Units (TUs = courses) that a student will actually take during the academic year.
 With this Annual Student Program Simulator you will be able to view your next annual student program based on the courses you pass and the courses that are available to you
+
+# Installation
+Without a ssh key:
+```
+$ git clone https://github.com/alahyaoui/curriculum-simulator.git
+```
+With a ssh key:
+```
+$ git clone git@github.com:alahyaoui/curriculum-simulator.git
+```
