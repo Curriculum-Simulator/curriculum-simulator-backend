@@ -24,5 +24,8 @@ You need maven installed and added to your PATH environment variables
 $ mvn spring-boot:run
 ```
 
+# Usage
+After running the command above go to https://localhost:8080
+
 # Author
 - **Ayoub Lahyaoui**
