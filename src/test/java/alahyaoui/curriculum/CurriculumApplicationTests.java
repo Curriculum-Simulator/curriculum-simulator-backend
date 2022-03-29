@@ -1,4 +1,4 @@
-package mobg6.pae;
+package alahyaoui.curriculum;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
