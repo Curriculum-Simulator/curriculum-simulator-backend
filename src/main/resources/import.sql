@@ -1,3 +1,4 @@
+/* Common courses */
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (1,'CAI1','Communication anglophone contextualisé I','COMMON',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (1,'CPT1','Comptabilité contextualisée I','COMMON',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (1,'DEV1','Développement I','COMMON',10,114);
@@ -18,6 +19,8 @@ INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'DON3','Pe
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'DEV4','Développement IV','COMMON',3,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'DON4','Persistance des données III','COMMON',3,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'VEI5','Veilles technologiques','COMMON',1,24);
+
+/* Management courses */
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (2,'WEBG2','Développement Web I','MANAGEMENT',5,60);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'ATLG3','Atelier Logiciel I','MANAGEMENT',5,48);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'CAIG3','Communication contextualisée III','MANAGEMENT',3,48);
@@ -40,6 +43,8 @@ INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'SYSG5','S
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'WEBG5','Développement Web III','MANAGEMENT',3,48);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'TEXG5','Expression et communication','MANAGEMENT',2,30);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (6,'ETEG6','Epreuve terminale','MANAGEMENT',30,350);
+
+/* Industrial and Network courses */
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (2,'PHYIR2','Physique I','INDUSTRIAL_NETWORK',3,48);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (2,'RESIR2','Réseaux I','INDUSTRIAL_NETWORK',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'SYSIR3','Systèmes d''exploitation II','INDUSTRIAL_NETWORK',5,72);
@@ -47,6 +52,8 @@ INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'ATLIR4','
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'ORGIR5','Organisation des entreprises','INDUSTRIAL_NETWORK',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'ANLIR5','Laboratoire d''analyse III','INDUSTRIAL_NETWORK',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'ATLIR5','Atelier Logiciel II','INDUSTRIAL_NETWORK',4,48);
+
+/* Industrial courses */
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'AUTI3','Automates programmables I','INDUSTRIAL',5,48);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'AGRI4','Administration et gestion des réseaux','INDUSTRIAL',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'AVAI4','Acquisition,Visualisation et Analyse','INDUSTRIAL',5,84);
@@ -65,6 +72,8 @@ INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'SECI5','E
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'STRI5','Systèmes d''exploitation temps réel','INDUSTRIAL',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (5,'TEXI5','Expression et communication','INDUSTRIAL',2,30);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (6,'ETEI6','Epreuve terminale','INDUSTRIAL',30,350);
+
+/* Network courses */
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'LANR3','Réseaux LAN','NETWORK',5,60);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (3,'PHYR3','Physique II','NETWORK',2,24);
 INSERT INTO courses(quarter,id,title,section,credits,hours) VALUES (4,'AGLR4','Administration et Gestion des Réseaux I','NETWORK',2,36);
