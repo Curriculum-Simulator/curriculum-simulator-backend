@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * This class is used to create a graph of CourseNode objects
+ * 
+ * @author Ayoub Lahyaoui
  */
 @Component
 public class CourseGraph {
