@@ -11,15 +11,28 @@ import org.springframework.stereotype.Component;
 public class CourseGraph {
 
     private Set<CourseNode> nodes;
-
+  
+    /**
+     *  This is the constructor for the CourseGraph class. It creates a new HashSet of CourseNode objects.
+     */
     public CourseGraph() {
         nodes = new HashSet<>();
     }
 
+    /**
+     * Add a node to the list of nodes
+     * 
+     * @param node The node to add to the list.
+     */
     public void addNode(CourseNode node) {
         nodes.add(node);
     }
 
+    /**
+     * Add a list of nodes to the graph
+     * 
+     * @param nodes A list of CourseNode objects.
+     */
     public void addNodes(List<CourseNode> nodes) {
         for (CourseNode node : nodes) {
             this.nodes.add(node);
