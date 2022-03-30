@@ -19,8 +19,8 @@ $ git clone git@github.com:alahyaoui/curriculum-simulator.git
 ```
 
 # Execution
-You need maven installed and added to your PATH environment variables
-if its not, download maven <a href="https://maven.apache.org/install.html">here</a>
+You need maven installed and added to your PATH environment variables.
+If its not, download maven <a href="https://maven.apache.org/install.html">here</a>
 ```
 $ mvn spring-boot:run
 ```
