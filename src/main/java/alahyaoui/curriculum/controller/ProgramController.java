@@ -41,6 +41,8 @@ public class ProgramController {
      */
     @PostMapping("/program")
     public String submitProgram(Model model, Program program) {
+        // @TOFIX Update two times in case of not properly treated courses
+        programService.updateProgram(program);
         programService.updateProgram(program);
         List<Course> courses = programService.getAnnualStudentProgram(program);
         model.addAttribute("pae", courses);
