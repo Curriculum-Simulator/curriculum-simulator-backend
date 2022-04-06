@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import alahyaoui.curriculum.exception.SectionNotFoundException;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.CourseService;
@@ -65,7 +66,7 @@ public class CourseRestController {
             case "management" -> section = Section.MANAGEMENT;
             case "network" -> section = Section.NETWORK;
             case "industrial" -> section = Section.INDUSTRIAL;
-            default -> section = Section.MANAGEMENT;
+            default -> throw new SectionNotFoundException(userSection);
         }
         return courseService.getSectionCourses(section);
     }
