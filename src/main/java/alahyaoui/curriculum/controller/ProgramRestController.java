@@ -25,7 +25,7 @@ public class ProgramRestController {
 
     @GetMapping("/api/program")
     public ResponseEntity<Program> getProgramView(@RequestParam(required = true) Section section) throws Exception {
-        return new ResponseEntity(programService.getStudentProgram(section), HttpStatus.OK);
+        return new ResponseEntity<>(programService.getStudentProgram(section), HttpStatus.OK);
     }
 
     /**
@@ -43,6 +43,6 @@ public class ProgramRestController {
         // @TOFIX Update two times in case of not properly treated courses
         programService.updateProgram(program);
         programService.updateProgram(program);
-        return new ResponseEntity(getAnnualStudentProgram(program), HttpStatus.OK);
+        return new ResponseEntity<>(programService.getAnnualStudentProgram(program), HttpStatus.OK);
     }
 }

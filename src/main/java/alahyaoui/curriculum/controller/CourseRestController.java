@@ -35,7 +35,7 @@ public class CourseRestController {
      */
     @GetMapping("/api/courses")
     public ResponseEntity<List<Course>> getCourses(@RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
-        return new ResponseEntity(courseService.getCoursesBy(filter, field), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getCoursesBy(filter, field), HttpStatus.OK);
     }
 
     /**
@@ -48,7 +48,7 @@ public class CourseRestController {
      */
     @GetMapping("/api/courses/all")
     public ResponseEntity<List<Course>> getAllCourses() {
-        return new ResponseEntity(courseService.getAllCourses(), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     /**
@@ -62,6 +62,6 @@ public class CourseRestController {
      */
     @GetMapping("/api/courses/{section}")
     public ResponseEntity<List<Course>> getSectionCourses(@PathVariable Section section) { 
-        return new ResponseEntity(courseService.getSectionCourses(section), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getSectionCourses(section), HttpStatus.OK);
     }
 }
