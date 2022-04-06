@@ -22,7 +22,7 @@ public class ProgramRestController {
     private final ProgramService programService;
 
     @GetMapping("/api/program")
-    public Program getProgramView(@RequestParam(required = false) Section section) throws Exception {
+    public Program getProgramView(@RequestParam(required = true) Section section) throws Exception {
         return programService.getStudentProgram(section);
     }
 

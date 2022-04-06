@@ -23,7 +23,7 @@ public class ProgramController {
     private final ProgramService programService;
 
     @GetMapping("/program")
-    public String getProgramView(Model model, @RequestParam(required = false) Section section) throws Exception {
+    public String getProgramView(Model model, @RequestParam(required = true) Section section) throws Exception {
         Program program = programService.getStudentProgram(section);
         model.addAttribute("program", program);
         return "program";
