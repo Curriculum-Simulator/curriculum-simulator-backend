@@ -12,7 +12,6 @@ import alahyaoui.curriculum.business.Program;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.ProgramService;
-import groovyjarjarpicocli.CommandLine.Model;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -23,7 +22,7 @@ public class ProgramRestController {
     private final ProgramService programService;
 
     @GetMapping("/api/program")
-    public Program getProgramView(Model model, @RequestParam(required = false) Section section) throws Exception {
+    public Program getProgramView(@RequestParam(required = false) Section section) throws Exception {
         return programService.getStudentProgram(section);
     }
 
@@ -38,7 +37,7 @@ public class ProgramRestController {
      * @return The program page is being returned.
      */
     @PostMapping("/api/program")
-    public List<Course> submitProgram(Model model, Program program) {
+    public List<Course> submitProgram(Program program) {
         // @TOFIX Update two times in case of not properly treated courses
         programService.updateProgram(program);
         programService.updateProgram(program);
