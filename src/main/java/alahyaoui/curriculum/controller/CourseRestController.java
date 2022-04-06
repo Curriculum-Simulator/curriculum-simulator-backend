@@ -3,12 +3,13 @@ package alahyaoui.curriculum.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import alahyaoui.curriculum.exception.SectionNotFoundException;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.CourseService;
@@ -33,8 +34,8 @@ public class CourseRestController {
      * @return The view name "course_search"
      */
     @GetMapping("/api/courses")
-    public List<Course> getCourses(@RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
-        return courseService.getCoursesBy(filter, field);
+    public ResponseEntity<List<Course>> getCourses(@RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
+        return new ResponseEntity(courseService.getCoursesBy(filter, field), HttpStatus.OK);
     }
 
     /**
@@ -46,8 +47,8 @@ public class CourseRestController {
      * @return The view name course_result.
      */
     @GetMapping("/api/courses/all")
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
+    public ResponseEntity<List<Course>> getAllCourses() {
+        return new ResponseEntity(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     /**
@@ -60,7 +61,7 @@ public class CourseRestController {
      * @return The view name "course_result"
      */
     @GetMapping("/api/courses/{section}")
-    public List<Course> getSectionCourses(@PathVariable Section section) {
-        return courseService.getSectionCourses(section);
+    public ResponseEntity<List<Course>> getSectionCourses(@PathVariable Section section) { 
+        return new ResponseEntity(courseService.getSectionCourses(section), HttpStatus.OK);
     }
 }
