@@ -59,15 +59,8 @@ public class CourseRestController {
      * @param userSection The section the user is looking for.
      * @return The view name "course_result"
      */
-    @GetMapping("/api/courses/{userSection}")
-    public List<Course> getSectionCourses(@PathVariable String userSection) {
-        Section section;
-        switch (userSection) {
-            case "management" -> section = Section.MANAGEMENT;
-            case "network" -> section = Section.NETWORK;
-            case "industrial" -> section = Section.INDUSTRIAL;
-            default -> throw new SectionNotFoundException(userSection);
-        }
+    @GetMapping("/api/courses/{section}")
+    public List<Course> getSectionCourses(@PathVariable Section section) {
         return courseService.getSectionCourses(section);
     }
 }
