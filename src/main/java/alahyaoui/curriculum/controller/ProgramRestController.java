@@ -3,6 +3,8 @@ package alahyaoui.curriculum.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +24,8 @@ public class ProgramRestController {
     private final ProgramService programService;
 
     @GetMapping("/api/program")
-    public Program getProgramView(@RequestParam(required = true) Section section) throws Exception {
-        return programService.getStudentProgram(section);
+    public ResponseEntity<Program> getProgramView(@RequestParam(required = true) Section section) throws Exception {
+        return new ResponseEntity(programService.getStudentProgram(section), HttpStatus.OK);
     }
 
     /**
@@ -37,10 +39,10 @@ public class ProgramRestController {
      * @return The program page is being returned.
      */
     @PostMapping("/api/program")
-    public List<Course> submitProgram(Program program) {
+    public ResponseEntity<List<Course>> submitProgram(Program program) {
         // @TOFIX Update two times in case of not properly treated courses
         programService.updateProgram(program);
         programService.updateProgram(program);
-        return programService.getAnnualStudentProgram(program);
+        return new ResponseEntity(getAnnualStudentProgram(program), HttpStatus.OK);
     }
 }
