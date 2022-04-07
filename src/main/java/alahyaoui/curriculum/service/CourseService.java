@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import alahyaoui.curriculum.exception.SectionNotValidException;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.repository.CourseRepository;
@@ -82,7 +83,7 @@ public class CourseService {
                 courses = getNetworkCourses();
                 break;
             default:
-                throw new IllegalArgumentException("Section must be either MANAGEMENT, INDUSTRIAL and NETWORK");
+                throw new SectionNotValidException(section);
         }
 
         return courses;

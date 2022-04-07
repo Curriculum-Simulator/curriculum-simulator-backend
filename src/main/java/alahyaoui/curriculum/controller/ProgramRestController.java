@@ -3,11 +3,12 @@ package alahyaoui.curriculum.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import alahyaoui.curriculum.business.Program;
 import alahyaoui.curriculum.model.Course;
@@ -15,18 +16,16 @@ import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.ProgramService;
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-public class ProgramController {
+public class ProgramRestController {
 
     @Autowired
     private final ProgramService programService;
 
-    @GetMapping("/program")
-    public String getProgramView(Model model, @RequestParam(required = true) Section section) throws Exception {
-        Program program = programService.getStudentProgram(section);
-        model.addAttribute("program", program);
-        return "program";
+    @GetMapping("/api/program")
+    public ResponseEntity<Program> getProgramView(@RequestParam(required = true) Section section) throws Exception {
+        return new ResponseEntity<>(programService.getStudentProgram(section), HttpStatus.OK);
     }
 
     /**
@@ -39,13 +38,11 @@ public class ProgramController {
      * @param program The program to be updated.
      * @return The program page is being returned.
      */
-    @PostMapping("/program")
-    public String submitProgram(Model model, Program program) {
+    @PostMapping("/api/program")
+    public ResponseEntity<List<Course>> submitProgram(Program program) {
         // @TOFIX Update two times in case of not properly treated courses
         programService.updateProgram(program);
         programService.updateProgram(program);
-        List<Course> courses = programService.getAnnualStudentProgram(program);
-        model.addAttribute("pae", courses);
-        return "program";
+        return new ResponseEntity<>(programService.getAnnualStudentProgram(program), HttpStatus.OK);
     }
 }

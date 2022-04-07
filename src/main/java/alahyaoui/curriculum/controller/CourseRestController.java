@@ -3,20 +3,21 @@ package alahyaoui.curriculum.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.CourseService;
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-public class CourseController {
+public class CourseRestController {
 
     @Autowired
     private final CourseService courseService;
@@ -32,13 +33,9 @@ public class CourseController {
      * @param field  The field to filter by.
      * @return The view name "course_search"
      */
-    @GetMapping("/courses")
-    public String getCourses(Model model, @RequestParam(required = false) String filter,
-            @RequestParam(required = false) String field) {
-        List<Course> courses = courseService.getCoursesBy(filter, field);
-
-        model.addAttribute("courses", courses);
-        return "course_search";
+    @GetMapping("/api/courses")
+    public ResponseEntity<List<Course>> getCourses(@RequestParam(required = false) String filter, @RequestParam(required = false) String field) {
+        return new ResponseEntity<>(courseService.getCoursesBy(filter, field), HttpStatus.OK);
     }
 
     /**
@@ -49,12 +46,9 @@ public class CourseController {
      *              view.
      * @return The view name course_result.
      */
-    @GetMapping("/courses/all")
-    public String getAllCourses(Model model) {
-        List<Course> courses = courseService.getAllCourses();
-
-        model.addAttribute("courses", courses);
-        return "course_result";
+    @GetMapping("/api/courses/all")
+    public ResponseEntity<List<Course>> getAllCourses() {
+        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     /**
@@ -66,12 +60,8 @@ public class CourseController {
      * @param userSection The section the user is looking for.
      * @return The view name "course_result"
      */
-    @GetMapping("/courses/{section}")
-    public String getSectionCourses(Model model, @PathVariable Section section) {
-        List<Course> courses = courseService.getSectionCourses(section);
-
-        model.addAttribute("courses", courses);
-        model.addAttribute("section", section);
-        return "course_result";
+    @GetMapping("/api/courses/{section}")
+    public ResponseEntity<List<Course>> getSectionCourses(@PathVariable Section section) { 
+        return new ResponseEntity<>(courseService.getSectionCourses(section), HttpStatus.OK);
     }
 }
