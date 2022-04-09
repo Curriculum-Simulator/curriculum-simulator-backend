@@ -23,6 +23,7 @@ import alahyaoui.curriculum.dto.CourseDto;
 import alahyaoui.curriculum.dto.CourseStateDto;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
+import alahyaoui.curriculum.util.HashMapUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -208,7 +209,7 @@ public class ProgramService {
     }
 
     public void updateProgram(ArrayList<CourseDto> studentProgram) {
-        HashMap<String, CourseDto> idToCourse = convertArrayListToHashMap(studentProgram);
+        HashMap<String, CourseDto> idToCourse = HashMapUtil.convertArrayListToHashMap(studentProgram);
         for (var course : studentProgram) {
             CourseNode courseNode = courseGraph.search(course.getId());
 
@@ -246,13 +247,5 @@ public class ProgramService {
             }
         }
         return true;
-    }
-
-    private HashMap<String, CourseDto> convertArrayListToHashMap(ArrayList<CourseDto> arrayList) {
-        HashMap<String, CourseDto> hashMap = new HashMap<>();
-        for (var item : arrayList) {
-            hashMap.put(item.getId(), item);
-        }
-        return hashMap;
     }
 }
