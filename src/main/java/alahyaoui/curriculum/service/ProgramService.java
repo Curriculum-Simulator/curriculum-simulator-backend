@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,9 +19,11 @@ import org.springframework.stereotype.Service;
 import alahyaoui.curriculum.business.CourseGraph;
 import alahyaoui.curriculum.business.CourseNode;
 import alahyaoui.curriculum.business.Program;
+import alahyaoui.curriculum.dto.CourseDto;
 import alahyaoui.curriculum.dto.CourseStateDto;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
+import alahyaoui.curriculum.util.HashMapUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -125,8 +128,8 @@ public class ProgramService {
     }
 
     /**
-     * If all prerequisites are passed and all corequisites are accessible, then the course is
-     * accessible
+     * If all prerequisites are passed and all corequisites are accessible, 
+     * then the course is accessible
      * 
      * @param studentProgram The student's program.
      */
@@ -148,11 +151,11 @@ public class ProgramService {
     }
 
     /**
-     * Given a student program and a course node, return true if all the prerequisites of the course
-     * node have been passed
+     * Given a student program and a course node, return true if all the
+     * prerequisites of the course node have been passed
      * 
      * @param studentProgram The student's program.
-     * @param courseNode The course node that we are trying to evaluate.
+     * @param courseNode     The course node that we are trying to evaluate.
      * @return The method returns a boolean value.
      */
     private boolean areAllPrerequisitesPassed(Program studentProgram, CourseNode courseNode) {
@@ -168,11 +171,12 @@ public class ProgramService {
     }
 
     /**
-     * Given a student program and a course node, return true if all of the corequisites of the course
-     * node are accessible to the student
+     * Given a student program and a course node, return true if all of the
+     * corequisites of the course node are accessible to the student
      * 
      * @param studentProgram The student's program.
      * @param courseNode The course node that we are trying to add to the student program.
+     *                       
      * @return The method returns a boolean value.
      */
     private boolean areAllCorequisitesAccessible(Program studentProgram, CourseNode courseNode) {
@@ -180,6 +184,64 @@ public class ProgramService {
         for (var corequisite : corequisites) {
             String courseId = corequisite.getId();
             CourseStateDto courseState = studentProgram.getStudentProgramCourse(courseId);
+            if (courseState.isAccessible() == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*** For rest api (because passing a program object encapsulating a hashmap is not practical) ***/
+
+    /**
+     * Get the program for a section
+     * 
+     * @param section The section to get the program for.
+     * @return A Program object.
+     */
+    public List<CourseDto> getProgram(Section section) {
+        List<Course> courses = courseService.getSectionCourses(section);
+        List<CourseDto> program = new ArrayList<CourseDto>();
+        for (Course course : courses){
+            program.add(new CourseDto(course));
+        }
+        return program;
+    }
+
+    public void updateProgram(ArrayList<CourseDto> studentProgram) {
+        HashMap<String, CourseDto> idToCourse = HashMapUtil.convertArrayListToHashMap(studentProgram);
+        for (var course : studentProgram) {
+            CourseNode courseNode = courseGraph.search(course.getId());
+
+            if (course.isPassed()) {
+                course.setAccessible(false);
+            } else {
+                if (areAllPrerequisitesPassed(idToCourse, courseNode)
+                        && areAllCorequisitesAccessible(idToCourse, courseNode)) {
+                    course.setAccessible(true);
+                }
+            }
+        }
+    }
+
+    
+    private boolean areAllPrerequisitesPassed(HashMap<String, CourseDto> studentProgram, CourseNode courseNode) {
+        var corequisites = courseNode.getCorequisites();
+        for (var corequisite : corequisites) {
+            String corequisiteId = corequisite.getId();
+            CourseDto courseState = studentProgram.get(corequisiteId);
+            if (courseState.isPassed() == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean areAllCorequisitesAccessible(HashMap<String, CourseDto> studentProgram, CourseNode courseNode) {
+        var corequisites = courseNode.getCorequisites();
+        for (var corequisite : corequisites) {
+            String corequisiteId = corequisite.getId();
+            CourseDto courseState = studentProgram.get(corequisiteId);
             if (courseState.isAccessible() == false) {
                 return false;
             }
