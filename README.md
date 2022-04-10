@@ -1,6 +1,11 @@
 # Introduction
 
-Curriculum Simulator is a Progressive Web Application that allows students of my school to see which subjects are accessible to them according to the subjects they have passed.
+Curriculum Simulator is an Application that allows students of my school to see which subjects are accessible to them according to the subjects they have passed.
+
+
+This app exist both as a **Mobile app** and **Progressive Web App**.  
+> for the **mobile app** see <a href="https://github.com/alahyaoui/curriculum-simulator-mobile" />curriculum-simulator-mobile</a>  
+> for the **progressive web app** see https://curriculum-simulator.herokuapp.com/
 
 ## Description of an Annual Student Program (ASP)
 
