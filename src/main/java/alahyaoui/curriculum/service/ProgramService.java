@@ -226,7 +226,7 @@ public class ProgramService {
 
     
     private boolean areAllPrerequisitesPassed(HashMap<String, CourseDto> studentProgram, CourseNode courseNode) {
-        var prerequisites = courseNode.getCorequisites();
+        var prerequisites = courseNode.getPrerequisites();
         for (var prerequisite : prerequisites) {
             String prerequisiteId = prerequisite.getId();
             CourseDto courseState = studentProgram.get(prerequisiteId);
