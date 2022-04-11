@@ -226,10 +226,10 @@ public class ProgramService {
 
     
     private boolean areAllPrerequisitesPassed(HashMap<String, CourseDto> studentProgram, CourseNode courseNode) {
-        var corequisites = courseNode.getCorequisites();
-        for (var corequisite : corequisites) {
-            String corequisiteId = corequisite.getId();
-            CourseDto courseState = studentProgram.get(corequisiteId);
+        var prerequisites = courseNode.getCorequisites();
+        for (var prerequisite : prerequisites) {
+            String prerequisiteId = prerequisite.getId();
+            CourseDto courseState = studentProgram.get(prerequisiteId);
             if (courseState.isPassed() == false) {
                 return false;
             }
