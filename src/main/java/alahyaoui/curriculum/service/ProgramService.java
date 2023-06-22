@@ -24,6 +24,7 @@ import alahyaoui.curriculum.dto.CourseStateDto;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.util.HashMapUtil;
+import alahyaoui.curriculum.util.ComparatorUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -35,9 +36,6 @@ public class ProgramService {
 
     @Autowired
     private final CourseGraph courseGraph;
-
-    // This is a lambda expression that is used to sort the courses by their section.
-    private Comparator<Course> courseComparator = Comparator.comparingInt(Course::getQuarter).thenComparing(Course::getId);
 
     /**
      * Initialize the graph and prerequisites and corequisites
@@ -120,7 +118,7 @@ public class ProgramService {
             }
         }
 
-        annualStudentProgram.sort(courseComparator);
+        annualStudentProgram.sort(ComparatorUtil.COURSE_COMPARATOR);
         return annualStudentProgram;
     }
 

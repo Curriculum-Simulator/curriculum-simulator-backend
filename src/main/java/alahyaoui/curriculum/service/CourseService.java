@@ -9,6 +9,7 @@ import alahyaoui.curriculum.exception.SectionNotValidException;
 import alahyaoui.curriculum.model.Course;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.repository.CourseRepository;
+import alahyaoui.curriculum.util.ComparatorUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -86,6 +87,7 @@ public class CourseService {
                 throw new SectionNotValidException(section);
         }
 
+        courses.sort(ComparatorUtil.COURSE_COMPARATOR);
         return courses;
     }
 
