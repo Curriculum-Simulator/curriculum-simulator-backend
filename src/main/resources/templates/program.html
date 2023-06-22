@@ -43,10 +43,10 @@
                                                 <th>Accessible ?</th>
                                             </tr>
                                             <!-- List of Student Courses-->
-                                            <tr th:each="course: ${courses}">
+                                            <tr th:each="course: ${program}">
                                                 <td th:text="${course.id}">id</td>
-                                                <td th:text="${course.passed}">title</td>
-                                                <td th:text="${course.accessible}">credits</td>
+                                                <td th:text="${course.passed}">passed</td>
+                                                <td th:text="${course.accessible}">accessible</td>
 
                                                 <td>
                                                     <input class="form-check-input" type="checkbox" value=""
