@@ -37,10 +37,7 @@ public class ProgramService {
     private final CourseGraph courseGraph;
 
     // This is a lambda expression that is used to sort the courses by their section.
-    Comparator<Course> sectionComparator = Comparator.comparingInt(Course::getQuarter).thenComparing(Course::getId);
-
-    // This is a lambda expression that is used to sort the courses by their id.
-    Comparator<Course> idComparator = (course1, course2) -> course1.getId().compareTo(course2.getId());
+    private Comparator<Course> courseComparator = Comparator.comparingInt(Course::getQuarter).thenComparing(Course::getId);
 
     /**
      * Initialize the graph and prerequisites and corequisites
@@ -123,7 +120,7 @@ public class ProgramService {
             }
         }
 
-        annualStudentProgram.sort(sectionComparator);
+        annualStudentProgram.sort(courseComparator);
         return annualStudentProgram;
     }
 
