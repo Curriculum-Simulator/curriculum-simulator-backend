@@ -1,5 +1,6 @@
 package alahyaoui.curriculum.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import alahyaoui.curriculum.business.Program;
-import alahyaoui.curriculum.model.Course;
+import alahyaoui.curriculum.dto.CourseDto;
 import alahyaoui.curriculum.model.Section;
 import alahyaoui.curriculum.service.ProgramService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class ProgramController {
 
     @GetMapping("/program")
     public String getProgramView(Model model, @RequestParam(required = true) Section section) throws Exception {
-        Program program = programService.getStudentProgram(section);
+        List<CourseDto> program = programService.getProgram(section);
         model.addAttribute("program", program);
         return "program";
     }
@@ -40,12 +40,11 @@ public class ProgramController {
      * @return The program page is being returned.
      */
     @PostMapping("/program")
-    public String submitProgram(Model model, Program program) {
+    public String submitProgram(Model model, List<CourseDto> program) {
         // @TOFIX Update two times in case of not properly treated courses
         programService.updateProgram(program);
         programService.updateProgram(program);
-        List<Course> courses = programService.getAnnualStudentProgram(program);
-        model.addAttribute("pae", courses);
+        model.addAttribute("pae", program);
         return "program";
     }
 }

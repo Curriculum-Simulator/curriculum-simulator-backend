@@ -43,18 +43,20 @@
                                                 <th>Accessible ?</th>
                                             </tr>
                                             <!-- List of Student Courses-->
-                                            <tr th:each="course : ${program.coursesToStates.entrySet()}">
-                                                <td th:text="${course.key}">id</td>
+                                            <tr th:each="course: ${courses}">
+                                                <td th:text="${course.id}">id</td>
+                                                <td th:text="${course.passed}">title</td>
+                                                <td th:text="${course.accessible}">credits</td>
 
                                                 <td>
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="flexCheckDefault"
-                                                        th:field="*{coursesToStates['__${course.key}__'].passed}" />
+                                                        th:field="*{course.passed}" />
                                                 </td>
                                                 <td>
                                                     <input class="form-check-input disabled" type="checkbox" th:disabled="disabled"
                                                         id="flexCheckDefault"
-                                                        th:field="*{coursesToStates['__${course.key}__'].accessible}" />
+                                                        th:field="*{course.accessible}" />
                                                 </td>
                                             </tr>
                                             <!-- End of List of Student Courses-->
